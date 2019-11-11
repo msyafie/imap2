@@ -1,0 +1,88 @@
+<ion-header>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row color="success" justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+        <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
+
+          <ion-img class="centerPoint" style="width: 150px; height: 100px" src="assets/solatlogo.png"></ion-img>
+
+          <br>
+          <!--This is the text field for Email-->
+          <ion-item>
+            <ion-label></ion-label>
+            <ion-input type="text" formControlName="email" placeholder="Email"></ion-input>
+          </ion-item>
+
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div class="error-message"
+                *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <!--This is the text field for Password-->
+          <ion-item>
+            <ion-input type="password" placeholder="Password" formControlName="password" class="form-controll" required>
+            </ion-input>
+          </ion-item>
+
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message"
+                *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <br><br>
+          <!--Login button-->
+          <ion-button class="submit-btn" size="medium" type="submit" [disabled]="!validations_form.valid" expand="block"
+            color="primary">
+            LogIn
+          </ion-button>
+
+          <label class="error-message">{{errorMessage}}</label>
+        </form>
+        <p class="go-to-register">
+          No account yet? <br><a (click)="goToRegisterPage()">Create an account.</a>
+        </p>
+        <br>
+
+        <!-- Or
+        <h5><span>Or</span></h5>
+
+        This is the Facebook button (User can login via Facebook)-->
+        <!-- <div class="inline-block1">
+          <div class="p">
+            <ion-img style="width: 70px; height: 90px;" src="assets/facebook.png"></ion-img>
+          </div>
+        </div> -->
+
+        <!--The Google button (User can sign up via Google Account)-->
+        <!-- <div class="inline-block">
+          <ion-img style="width: 70px; height: 90px;" src="assets/google-plus.png"></ion-img>
+        </div>
+
+        <br>
+        <br> -->
+
+        <!--This is the Forget Password button-->
+        <ion-button name="forget_password" size="small" type="submit" color="primary">Forgot Password</ion-button>
+
+        <!-- <div class="l"> -->
+          <!--This is the Help button-->
+          <!-- <ion-img style="width: 30px; height: 45px;" src="assets/help.png"></ion-img>
+        </div> -->
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

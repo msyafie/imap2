@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Solat Tracker</ion-title>
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content  >
+  <form  #form="ngForm" (ngSubmit)="logForm()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Musafir Verification</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input  name="etd" type="number" placeholder="Travelling distance(KM)" [(ngModel)]="etd" clearInput value="clear me"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="dos" type="number" placeholder="Duration of staying(days)" [(ngModel)]="dos" clearInput value="clear me"></ion-input>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button  size="medium" type="submit" [disabled]="form.invalid" expand="block">Submit</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

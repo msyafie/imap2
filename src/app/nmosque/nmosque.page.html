@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Find Mosque"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+      <ion-list [hidden]="autocompleteItems.length == 0">
+        <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+          {{ item.description }}
+        </ion-item>
+      </ion-list>
+      <ion-grid *ngIf="nearbyItems.length == 0">
+        <ion-row>
+          <ion-col col-12>
+            <h3>
+              Please type a place on the Search bar to see nearby Mosque
+            </h3>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!-- <ion-list *ngIf="nearbyItems.length > 0">
+        <ion-item *ngFor="let place of nearbyItems">
+            <ion-grid>
+              <ion-row class='align-items-center'>
+                <ion-col>
+                    Place Name : <b>{{place.name}}</b>
+                </ion-col>
+                <ion-col> </ion-col>
+                <ion-col>
+                    Address : {{place.vicinity}}
+                </ion-col>
+              <ion-col> </ion-col>
+                <ion-col>
+                    Rating : <b>{{place.destinations}}</b>
+                </ion-col>
+                <ion-col>
+                    <ion-button *ngIf="(place.opening_hours && !place.opening_hours.open_now)" size="small" color="danger" shape="round" >CLOSED</ion-button>
+                    <ion-button  *ngIf="(place.opening_hours && place.opening_hours.open_now)" size="small" color="success" shape="round" >OPEN NOW</ion-button>
+                </ion-col>
+              </ion-row>
+              </ion-grid>
+        </ion-item>
+      </ion-list> -->
+  
+      <ion-list *ngIf="nearbyItems.length > 0">
+          <ion-item *ngFor="let place of nearbyItems">
+            <ion-col col-12>
+            <ion-label>Place Name : {{place.name}}</ion-label>
+            <br>
+            <ion-label>Address: {{place.vicinity}}</ion-label>
+            <br>
+            
+          </ion-col>
+           
+          <ion-col col-12>
+              <ion-label>Rating: {{place.rating}}</ion-label>
+          </ion-col>
+          
+           
+          </ion-item>
+        </ion-list>
+    
+    </ion-content>
