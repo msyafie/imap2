@@ -1,5 +1,7 @@
 <ion-header>
-    <ion-toolbar color="primary">
+  
+    
+    <ion-toolbar color="success">
       <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Find Restaurants"></ion-searchbar>
     </ion-toolbar>
   </ion-header>
@@ -14,9 +16,11 @@
     <ion-grid *ngIf="nearbyItems.length == 0">
       <ion-row>
         <ion-col col-12>
-          <h3>
-            Please type a place on the Search bar to see nearby Restaurants
-          </h3>
+            <ion-card>
+                <ion-card-content>
+                    Enter location name to search nearby restaurants within that place. 
+                  </ion-card-content>
+            </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -47,19 +51,16 @@
     <ion-list *ngIf="nearbyItems.length > 0">
         <ion-item *ngFor="let place of nearbyItems">
           <ion-col>
-          <ion-label>Place Name : {{place.name}}</ion-label>
-          <br>
-          <ion-label>Address: {{place.vicinity}}</ion-label>
-          <br>
-          <ion-label>Rating: {{place.rating}}</ion-label>
+              <ion-card>
+                  <ion-card-content>
+                      <ion-label>Place Name : {{place.name}}</ion-label>
+                      <ion-label>Address: {{place.vicinity}}</ion-label>
+                      <ion-label>Rating: {{place.rating}}</ion-label>
+                      <ion-button *ngIf="(place.opening_hours && !place.opening_hours.open_now)" size="small" color="danger" shape="round" >CLOSE</ion-button>
+                       <ion-button  *ngIf="(place.opening_hours && place.opening_hours.open_now)" size="small" color="success" shape="round" >OPEN</ion-button>
+                    </ion-card-content>
+              </ion-card>     
         </ion-col>
-        <ion-col>
-            <ion-button *ngIf="(place.opening_hours && !place.opening_hours.open_now)" size="small" color="danger" shape="round" >CLOSE</ion-button>
-            <ion-button  *ngIf="(place.opening_hours && place.opening_hours.open_now)" size="small" color="success" shape="round" >OPEN</ion-button>
-        </ion-col>
-         
-        
-         
         </ion-item>
       </ion-list>
   

@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
 
@@ -16,7 +17,8 @@ import * as firebase from 'firebase';
 export class Tab3Page {
 
     constructor(public navCtrl: NavController,
-        public alertController: AlertController) {
+        public alertController: AlertController,
+        private router: Router) {
 
     }
 
@@ -24,6 +26,10 @@ export class Tab3Page {
 
     etd: any;
     dos: any;
+
+    profile() {
+      this.router.navigateByUrl('/calculate-distance');
+    }
   logForm() {
  
     if(this.etd >= 90)
@@ -48,7 +54,7 @@ export class Tab3Page {
     
       
   }
-
+  
   async ineligibleAlert() {
     const alert = await this.alertController.create({
       header: 'Musafir Verification',
@@ -87,6 +93,7 @@ export class Tab3Page {
         }, {
           text: 'Okay',
           handler: () => {
+          //this one
            var  currentUID = firebase.auth().currentUser.uid
             firebase.firestore().collection('user').doc(currentUID).update({
               status : true

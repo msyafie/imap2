@@ -4,7 +4,13 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Solat Tracker</ion-title>
+    
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=#>
+      </ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
+
 
 </ion-header>
 
@@ -15,7 +21,13 @@
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div text-center>
             <h3>Musafir Verification</h3>
-            <h3>MusMe</h3>
+            <ion-card>
+                <ion-card-content>
+                    Check Your travelling distance accurately by clicking "Check Distance" button and enter the value in the text box below
+                  </ion-card-content>
+                </ion-card>
+         
+           
           </div>
           <div padding>
             <ion-item>
@@ -32,4 +44,11 @@
       </ion-row>
     </ion-grid>
   </form>
+
+  <div text-center>
+    <ion-button  align-self-center justify-content-center size="medium"  color="warning" (click)="profile()">Check distance<ion-icon name="help"></ion-icon></ion-button>
+  </div>
+
+  
+  
 </ion-content>
