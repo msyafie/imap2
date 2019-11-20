@@ -10,7 +10,8 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   { path: 'nmosque', loadChildren: './nmosque/nmosque.module#NmosquePageModule' },
-  { path: 'calculate-distance', loadChildren: './calculate-distance/calculate-distance.module#CalculateDistancePageModule' },
+  { path: 'calculate-distance', loadChildren: './calculate-distance/calculate-distance.module#CalculateDistancePageModule' },  { path: 'prayertime', loadChildren: './prayertime/prayertime.module#PrayertimePageModule' },
+
   
   
 ];

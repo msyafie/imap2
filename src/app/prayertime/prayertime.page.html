@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Prayer Time </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-image">
+    <form #form= "ngForm" (ngSubmit)="getLocation( userInput)">
+   <ion-item  >
+  <ion-input type="text" [(ngModel)]="userInput" placeholder="Enter you zone"  [ngModelOptions]="{standalone: true}"></ion-input>
+  <ion-button  type="submit">Search </ion-button>
+   </ion-item>
+  
+   <div class="ion-text-center">
+     <h3 > Prayer Time in  {{negeri}}, </h3>
+     <h3> {{zon}} </h3>
+     <h3> Today </h3>
+   </div>
+    
+   <div class=" ion-text-center">
+ 
+    <ion-grid>
+        <ion-col class="ion-no-padding">
+         <ion-card>
+           <ion-card-content class="fixline">
+             Fajr :{{subuh}}
+             
+           </ion-card-content>
+         </ion-card>
+         
+         <ion-card>
+            <ion-card-content class="fixline">
+             Syuruk: {{syuruk}}
+            </ion-card-content>
+          </ion-card>
+
+           
+         <ion-card>
+            <ion-card-content class="fixline">
+            Zohor: {{zohor}}
+            </ion-card-content>
+          </ion-card>
+
+           
+         <ion-card>
+            <ion-card-content class="fixline">
+             Asar: {{asar}}
+            </ion-card-content>
+          </ion-card>
+
+           
+         <ion-card>
+            <ion-card-content class="fixline">
+             Maghrib: {{maghrib}}
+            </ion-card-content>
+          </ion-card>
+
+
+           
+         <ion-card>
+            <ion-card-content class="fixline">
+             Isyak: {{isyak}}
+            </ion-card-content>
+          </ion-card>
+
+         </ion-col>
+        
+        </ion-grid>
+
+               
+             
+   </div>
+
+  
+  </form> 
+
+
+
+</ion-content>
