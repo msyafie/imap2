@@ -38,6 +38,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'tab4',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../nmosque/nmosque.module').then(m => m.NmosquePageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
