@@ -26,9 +26,23 @@ export class Tab3Page {
 
     etd: any;
     dos: any;
+    state = {
+      status
+    }
 
     profile() {
       this.router.navigateByUrl('/calculate-distance');
+    }
+
+    onGet(){
+      firebase.firestore().collection('user').doc(firebase.auth().currentUser.uid).get().then
+      (doc => {
+        this.state.status = doc.data().status
+      })
+
+      return status 
+      console.log('okay')
+
     }
   logForm() {
  
