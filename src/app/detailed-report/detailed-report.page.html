@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-toolbar color="success">
+      <ion-title>Detailed Solat Report</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+      <ion-item text-center>  
+            <ion-label>From</ion-label>
+            <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Select Date"></ion-datetime>
+            <ion-label>To</ion-label>
+            <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Select Date"></ion-datetime>
+          </ion-item>
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center>
+          <div text-center>
+              <ion-img class="centerPoint" style="width: 150px; height: 100px" src="assets/successful.png"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col align-self-center>
+            <div text-center>
+                <ion-item text-center><ion-label>Successful Rakaat</ion-label></ion-item>
+            </div>
+        </ion-col>
+        <ion-col align-self-center>
+            <div text-center>
+              <ion-input type="number" value="0"></ion-input>
+            </div>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col align-self-center>
+          <div text-center>
+              <ion-img class="centerPoint" style="width: 150px; height: 100px" src="assets/failed.png"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col align-self-center>
+            <div text-center>
+                <ion-item text-center><ion-label>Unsuccessful Rakaat</ion-label></ion-item>
+            </div>
+        </ion-col>
+        <ion-col align-self-center>
+            <div text-center>
+              <ion-input type="number" value="0"></ion-input>
+            </div>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col align-self-center>
+          <div text-center>
+              <ion-img class="centerPoint" style="width: 150px; height: 100px" src="assets/sunat.png"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col align-self-center>
+            <div text-center>
+                <ion-item text-center><ion-label>Extra Sunat Rakaat</ion-label></ion-item>
+            </div>
+        </ion-col>
+        <ion-col align-self-center>
+            <div text-center>
+              <ion-input type="number" value="0"></ion-input>
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card>
+        <ion-card-header>
+          Solat Performance
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #barCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+  </ion-content>
+  

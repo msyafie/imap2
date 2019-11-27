@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import { PrayerService } from 'src/app/services/prayer.service';
 import { FormsModule } from '@angular/forms';
 import { Platform, NavParams,NavController } from '@ionic/angular';

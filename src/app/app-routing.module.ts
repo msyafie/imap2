@@ -11,6 +11,10 @@ const routes: Routes = [
   },
   { path: 'nmosque', loadChildren: './nmosque/nmosque.module#NmosquePageModule' },
   { path: 'calculate-distance', loadChildren: './calculate-distance/calculate-distance.module#CalculateDistancePageModule' },  { path: 'prayertime', loadChildren: './prayertime/prayertime.module#PrayertimePageModule' },
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
+  { path: 'solat-report', loadChildren: './solat-report/solat-report.module#SolatReportPageModule' },
+  { path: 'detailed-report', loadChildren: './detailed-report/detailed-report.module#DetailedReportPageModule' },
+  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
 
   
   

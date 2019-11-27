@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Dashboard</ion-title>
+    <ion-button  align-self-center justify-content-center size="medium"   color="danger" (click)="onGet()"><ion-icon name="help" slot="end"></ion-icon></ion-button>
+    <ion-label>Musafir Status : {{state.status}}</ion-label>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content padding>
+  <ion-item text-center><ion-label> السلام عليكم</ion-label> </ion-item>
+  <ion-card>
+    <ion-card-header>
+      Solat Performance
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #doughnutCanvas></canvas>
+    </ion-card-content>
+    <ion-button expand="block" routerLink="/solat-report" routerDirection="root">See Detailed</ion-button>
+  </ion-card>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+            <ion-img name="qiblat" (click)="goToQiblat()" class="centerPoint" style="width: 150px; height: 100px" src="assets/qiblat.png"></ion-img>
+            <ion-item text-center><ion-label>Qiblat Finder</ion-label></ion-item>
+        </div>
+      </ion-col>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+              <ion-img name="solatTime" (click)="goToSolatTime()" class="centerPoint" style="width: 150px; height: 100px" src="assets/solat-time.jpg"></ion-img>
+              <ion-item text-center><ion-label>Solat Time</ion-label></ion-item>
+          </div>
+        </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+              <ion-img name="mosque" (click)="goToMosque()" class="centerPoint" style="width: 150px; height: 100px" src="assets/mosque.png"></ion-img>
+              <ion-item text-center><ion-label>Mosque Locator</ion-label></ion-item>
+          </div>
+        </ion-col>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+                <ion-img name="restaurant" (click)="goToRestaurant()" class="centerPoint" style="width: 150px; height: 100px" src="assets/restaurant.png"></ion-img>
+                <ion-item text-center><ion-label>Restaurant Locator</ion-label></ion-item>
+            </div>
+          </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+                <ion-img name="weather" (click)="goToWeather()" class="centerPoint" style="width: 150px; height: 100px" src="assets/weather.png"></ion-img>
+                <ion-item text-center><ion-label>Weather Forecast</ion-label></ion-item>
+            </div>
+          </ion-col>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div text-center>
+                  <ion-img name="musafir" (click)="goToMusafir()" class="centerPoint" style="width: 150px; height: 100px" src="assets/musafir.png"></ion-img>
+                  <ion-item text-center><ion-label>Musafir Verification</ion-label></ion-item>
+              </div>
+            </ion-col>
+        </ion-row>
+  </ion-grid>
+                  <ion-img name="map" (click)="goToMap()" class="centerPoint" style="width: 150px; height: 100px" src="assets/map.png"></ion-img>
+                  <ion-item text-center><ion-label>Map</ion-label></ion-item>
+</ion-content>
