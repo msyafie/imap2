@@ -1,6 +1,7 @@
 import { Component,NgZone } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { LoadingService } from 'loading.service';
+import { NavController } from '@ionic/angular';
 
 declare var google;
 @Component({
@@ -22,6 +23,7 @@ export class Tab2Page {
     public zone: NgZone,
     public loadingCtrl: LoadingController,
     public isloading: LoadingService,
+    private navCtrl: NavController,
   ) {
 
     this.geocoder = new google.maps.Geocoder;
@@ -81,6 +83,11 @@ export class Tab2Page {
     })
     
   }
+
+  backD() {
+    this.navCtrl.navigateForward('/dashboard');
+  }
+  
   }
 
 

@@ -38,12 +38,32 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab4',
+        path: 'nmosque',
         children: [
           {
             path: '',
             loadChildren: () =>
               import('../nmosque/nmosque.module').then(m => m.NmosquePageModule)
+          }
+        ]
+      },
+      {
+        path: 'tab5',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../prayertime/prayertime.module').then(m => m.PrayertimePageModule)
+          }
+        ]
+      },
+      {
+        path: 'tab6',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
           }
         ]
       },

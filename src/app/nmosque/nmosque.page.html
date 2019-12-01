@@ -1,7 +1,12 @@
 <ion-header>
     <ion-toolbar color="success">
+      
       <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Find Mosque"></ion-searchbar>
+      <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon>
+  
+      
     </ion-toolbar>
+    
   </ion-header>
 
   <ion-content>

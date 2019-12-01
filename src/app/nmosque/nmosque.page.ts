@@ -1,6 +1,7 @@
 import { Component,NgZone } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { LoadingService } from 'loading.service';
+import { NavController } from '@ionic/angular';
 
 declare var google;
 @Component({
@@ -21,6 +22,7 @@ export class NmosquePage {
   constructor(
     public zone: NgZone,
     public loadingCtrl: LoadingController,
+    private navCtrl: NavController,
     public isloading: LoadingService,
   ) { 
     this.geocoder = new google.maps.Geocoder;
@@ -80,5 +82,9 @@ export class NmosquePage {
     
   }
   
+
+  backD() {
+    this.navCtrl.navigateForward('/dashboard');
+  }
 
 }

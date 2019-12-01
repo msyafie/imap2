@@ -65,8 +65,8 @@ export class DashboardPage implements OnInit {
   goToRestaurant() {
     this.navCtrl.navigateForward('/tabs/tab2');
   }
-  goToMap() {
-    this.navCtrl.navigateForward('/tabs/tab1');
+  goMap() {
+    this.navCtrl.navigateForward('/tabs/tab6');
   }
   goToSolatTime() {
     this.navCtrl.navigateForward('/prayertime');

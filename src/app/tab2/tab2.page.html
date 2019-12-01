@@ -3,6 +3,7 @@
     
     <ion-toolbar color="success">
       <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Find Restaurants"></ion-searchbar>
+      <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon>
     </ion-toolbar>
   </ion-header>
   
