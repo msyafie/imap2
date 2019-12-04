@@ -11,7 +11,7 @@ export class SolatReportPage implements OnInit {
   startDate: Date;
   endDate: Date;
   successfulRakaat: number;
-  unsuccessfulRakaat: number;
+  unSuccessfulRakaat: number;
   sunatRakaat: number;
   customPickerOptions: any;
 
