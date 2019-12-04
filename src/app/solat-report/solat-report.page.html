@@ -22,7 +22,7 @@
       </ion-col>
       <ion-col align-self-center>
           <div text-center>
-            <ion-input type="number" value="0"></ion-input>
+            <ion-input type="number">{{successfulRakaat}}</ion-input>
           </div>
       </ion-col>
     </ion-row>
@@ -39,7 +39,7 @@
       </ion-col>
       <ion-col align-self-center>
           <div text-center>
-            <ion-input type="number" value="0"></ion-input>
+            <ion-input type="number" >{{unsuccessfulRakaat}}</ion-input>
           </div>
       </ion-col>
     </ion-row>
@@ -56,7 +56,7 @@
       </ion-col>
       <ion-col align-self-center>
           <div text-center>
-            <ion-input type="number" value="0"></ion-input>
+            <ion-input type="number">{{sunatRakaat}}</ion-input>
           </div>
       </ion-col>
     </ion-row>
@@ -65,10 +65,10 @@
   <ion-title text-center>See detailed report</ion-title>
   <ion-item text-center>
     <ion-label>From</ion-label>
-    <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Select Date"></ion-datetime>
+    <ion-datetime [pickerOptions]="customPickerOptions" displayFormat="DD MMMM YYYY" placeholder="Select Date"></ion-datetime>
     <ion-label>To</ion-label>
-    <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Select Date"></ion-datetime>
+    <ion-datetime [pickerOptions]="customPickerOptions" displayFormat="DD MMMM YYYY" placeholder="Select Date"></ion-datetime>
   </ion-item>
-<ion-button expand="block" routerLink="/detailed-report" routerDirection="root">Display Report</ion-button>
+<ion-button class="submit-btn" size="medium" type="submit" expand="block" routerLink="/tabs/tab8" routerDirection="root">Display Report</ion-button>
 </ion-card>
 </ion-content>

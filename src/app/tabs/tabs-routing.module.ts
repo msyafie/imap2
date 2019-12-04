@@ -68,6 +68,26 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'tab7',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../solat-report/solat-report.module').then(m => m.SolatReportPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tab8',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../detailed-report/detailed-report.module').then(m => m.DetailedReportPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

@@ -17,6 +17,7 @@ export class DashboardPage implements OnInit {
     private navCtrl: NavController
     ) {
   }
+  
   state = {
     status
   }
@@ -57,7 +58,7 @@ export class DashboardPage implements OnInit {
     this.navCtrl.navigateForward('https://qiblafinder.withgoogle.com');
   }
   goToMosque() {
-    this.navCtrl.navigateForward('/nmosque');
+    this.navCtrl.navigateForward('/tabs/nmosque');
   }
   goToMusafir() {
     this.navCtrl.navigateForward('/tabs/tab3');
@@ -69,6 +70,6 @@ export class DashboardPage implements OnInit {
     this.navCtrl.navigateForward('/tabs/tab6');
   }
   goToSolatTime() {
-    this.navCtrl.navigateForward('/prayertime');
+    this.navCtrl.navigateForward('/tabs/tab5');
   }
 }
