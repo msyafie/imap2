@@ -67,7 +67,7 @@ export class Tab2Page {
         this.autocompleteItems = [];
         this.GooglePlaces.nearbySearch({
           location: results[0].geometry.location,
-          radius: '500',
+          radius: '10000',
           types: ['restaurant'], //check other types here https://developers.google.com/places/web-service/supported_types
           key: 'AIzaSyDsggnlDQ6iz5CapY_vpR0K2-VjJz5Jut4&libraries=places'
         }, (near_places) => {

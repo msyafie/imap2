@@ -1,15 +1,17 @@
 <ion-header>
   <ion-toolbar color="success">
-    <ion-title>Dashboard</ion-title>
-    <ion-button  align-self-center justify-content-center size="medium"   color="danger" (click)="onGet()"><ion-icon name="help" slot="end"></ion-icon></ion-button>
-    <ion-label>Musafir Status : {{state.status}}</ion-label>
+    <ion-button  size="small" color="primary" (click)="onGet()" slot='start'>?</ion-button>
+    <ion-label >Musafir Status : {{state.status}}</ion-label>
+
+    <ion-button  size="small" color="warning" (click)="onUpdates()" slot='end'>Disable Musafir</ion-button>
+    
   </ion-toolbar>
 </ion-header> 
 
 <ion-content padding>
   <ion-item text-center><ion-label> السلام عليكم</ion-label> </ion-item>
   <ion-card size-sm>
-    <ion-card-header>
+    <ion-card-header> 
       Solat Performance
     </ion-card-header>
     <ion-card-content>

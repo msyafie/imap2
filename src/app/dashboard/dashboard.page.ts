@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from 'chart.js';
 import { NavController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import * as firebase from 'firebase';
 
 @Component({
@@ -14,7 +15,8 @@ export class DashboardPage implements OnInit {
   private doughnutChart: Chart;
 
   constructor(
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public alertController: AlertController,
     ) {
   }
   
@@ -53,6 +55,27 @@ export class DashboardPage implements OnInit {
     return status 
     console.log('okay')
 
+  }
+
+  onUpdates(){
+    var currentUID = firebase.auth().currentUser.uid
+    firebase.firestore().collection('user').doc(currentUID).update({
+              status : false
+            })
+
+    this.updateStatusAlert()
+    console.log('okay')
+  }
+
+  async updateStatusAlert() {
+    const alert = await this.alertController.create({
+      header: 'Musafir Status',
+      subHeader: 'Successful',
+      message: 'Musafir status successfully updated !',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
   goToQiblat() {
     this.navCtrl.navigateForward('https://qiblafinder.withgoogle.com');
