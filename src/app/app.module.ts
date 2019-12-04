@@ -17,13 +17,16 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
+import { SettingwPageModule } from './settingw/settingw.module';
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpModule} from '@angular/http';
 import * as firebase from 'firebase';
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,AngularFireAuthModule,AngularFireDatabaseModule,AngularFirestoreModule,HttpClientModule],
+  imports: [BrowserModule,IonicStorageModule.forRoot(),IonicModule.forRoot(), AppRoutingModule,SettingwPageModule,AngularFireAuthModule,AngularFireDatabaseModule,AngularFirestoreModule,HttpModule,HttpClientModule],
   providers: [
     StatusBar,
     Geolocation,

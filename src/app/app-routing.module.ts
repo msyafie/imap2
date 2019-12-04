@@ -15,7 +15,9 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
   { path: 'solat-report', loadChildren: './solat-report/solat-report.module#SolatReportPageModule' },
   { path: 'detailed-report', loadChildren: './detailed-report/detailed-report.module#DetailedReportPageModule' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'home', loadChildren: './home/home.module#HomePageModule' },  { path: 'weather', loadChildren: './weather/weather.module#WeatherPageModule' },
+  { path: 'settingw', loadChildren: './settingw/settingw.module#SettingwPageModule' },
+
 
   
   
