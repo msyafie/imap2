@@ -1,5 +1,6 @@
 import { Component, OnInit,  ViewChild, ElementRef} from '@angular/core';
 import { Chart } from "chart.js";
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-detailed-report',
@@ -9,6 +10,9 @@ import { Chart } from "chart.js";
 export class DetailedReportPage implements OnInit {
   @ViewChild("barCanvas",{ static: true }) barCanvas: ElementRef;
   private barChart: Chart;
+  successfulRakaat: number;
+  unSuccessfulRakaat: number;
+  sunatRakaat: number;
 
   constructor() { }
 
@@ -51,6 +55,18 @@ export class DetailedReportPage implements OnInit {
         }
       }
     });
+  }
+  onGet(){
+    firebase.firestore().collection('Report').doc(firebase.auth().currentUser.uid).get().then
+    (doc => {
+      this.successfulRakaat = doc.data().Successful_rakaat
+      this.unSuccessfulRakaat = doc.data().Unsuccessful_rakaat
+      this.sunatRakaat = doc.data().Sunat_rakaat
+    })
+
+    return this.successfulRakaat,this.unSuccessfulRakaat,this.sunatRakaat
+    console.log('okay')
+
   }
 }
 
