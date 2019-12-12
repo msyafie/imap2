@@ -88,6 +88,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'tab9',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../weather/weather.module').then(m => m.WeatherPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

@@ -10,9 +10,9 @@ import * as firebase from 'firebase';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  @ViewChild('doughnutCanvas',{ static: true }) doughnutCanvas: ElementRef;
+  @ViewChild('barCanvas',{ static: true }) barCanvas: ElementRef;
 
-  private doughnutChart: Chart;
+  private barChart: Chart;
 
   constructor(
     private navCtrl: NavController,
@@ -25,24 +25,42 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit() {
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-      type: "doughnut",
+    this.barChart = new Chart(this.barCanvas.nativeElement, {
+      type: "bar",
       data: {
         labels: ["Subuh", "Zohor", "Asar", "Maghrib", "Isya'"],
         datasets: [
           {
-            label: "Solat Status",
-            data: [1, 1, 1, 1, 1],
+            label: "# of Successful Rakaat",
+            data: [0, 1, 1, 1, 0],
             backgroundColor: [
-              "rgba(75, 192, 192, 0.4)",
-              "rgba(75, 192, 192, 0.4)",
-              "rgba(75, 192, 192, 0.4)",
-              "rgba(255, 99, 132, 0.4)",
-              "rgba(255, 99, 132, 0.4)"
+              "rgba(255, 99, 132, 0.5)",
+              "rgba(0, 255, 0, 0.5)",
+              "rgba(0, 255, 0, 0.5)",
+              "rgba(0, 255, 0, 0.5)",
+              "rgba(153, 102, 255, 0.5)"
             ],
-            hoverBackgroundColor: ["#2BA62E", "#2BA62E", "#2BA62E", "#FF6384", "#FF6384"]
+            borderColor: [
+              "rgba(255,99,132,1)",
+              "rgba(0, 255, 0, 1)",
+              "rgba(0, 255, 0, 1)",
+              "rgba(0, 255, 0, 1)",
+              "rgba(153, 102, 255, 1)"
+            ],
+            borderWidth: 1
           }
         ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
       }
     });
   }
@@ -77,9 +95,6 @@ export class DashboardPage implements OnInit {
 
     await alert.present();
   }
-  goToQiblat() {
-    this.navCtrl.navigateForward('https://qiblafinder.withgoogle.com');
-  }
   goToMosque() {
     this.navCtrl.navigateForward('/tabs/nmosque');
   }
@@ -94,5 +109,8 @@ export class DashboardPage implements OnInit {
   }
   goToSolatTime() {
     this.navCtrl.navigateForward('/tabs/tab5');
+  }
+  goToWeather(){
+    this.navCtrl.navigateForward('tabs/tab9');
   }
 }
