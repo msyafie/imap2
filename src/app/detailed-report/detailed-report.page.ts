@@ -23,12 +23,12 @@ export class DetailedReportPage implements OnInit {
         labels: ["Subuh", "Zohor", "Asar", "Maghrib", "Isya'"],
         datasets: [
           {
-            label: "# of Successful Rakaat",
-            data: [12, 19, 3, 5, 2, 3],
+            label: "# of Successful Solat",
+            data: [3, 5, 4, 5, 1],
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
+              "rgba(255, 206, 86, 0.2)", 
               "rgba(75, 192, 192, 0.2)",
               "rgba(153, 102, 255, 0.2)"
             ],

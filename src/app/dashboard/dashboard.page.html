@@ -1,68 +1,71 @@
 <ion-header>
   <ion-toolbar color="success">
-    <ion-title>Dashboard</ion-title>
-    <ion-button  align-self-center justify-content-center size="medium"   color="danger" (click)="onGet()"><ion-icon name="help" slot="end"></ion-icon></ion-button>
-    <ion-label>Musafir Status : {{state.status}}</ion-label>
+    <ion-title slot='centerPoint'>Dashboard</ion-title>
+    <ion-button  size="small" color="primary" (click)="onGet()" slot='start'>?</ion-button>
+    <ion-label >Musafir Status : {{state.status}}</ion-label>
+
+    <ion-button  size="small" color="warning" (click)="onUpdates()" slot='end'>Disable Musafir</ion-button>
+    
   </ion-toolbar>
 </ion-header> 
 
 <ion-content padding>
   <ion-item text-center><ion-label> السلام عليكم</ion-label> </ion-item>
   <ion-card size-sm>
-    <ion-card-header>
+    <ion-card-header> 
       Solat Performance
     </ion-card-header>
     <ion-card-content>
-      <canvas #doughnutCanvas></canvas>
+      <canvas #barCanvas></canvas>
     </ion-card-content>
     <ion-button class="submit-btn" size="medium" type="submit" expand="block" routerLink="/tabs/tab7" routerDirection="root">See Detailed</ion-button>
   </ion-card>
   <ion-grid ion-grid-width-md>
     <ion-row justify-content-center >
-      <ion-col align-self-center size-sm>
+      <ion-col align-self-start size-md="6" size-lg="5" size-xs="12">
         <div text-center>
-            <a href="https://qiblafinder.withgoogle.com/"><ion-img name="qiblat" class="centerPoint" style="width: 150px; height: 100px" src="assets/qiblat.png"></ion-img></a>
+            <a href="https://qiblafinder.withgoogle.com/"><ion-icon name="compass" class="centerPoint"></ion-icon></a>
             <ion-item text-center><ion-label>Qiblat Finder</ion-label></ion-item>
         </div>
       </ion-col>
-      <ion-col align-self-center size-sm>
+      <ion-col align-self-start size-md="6" size-lg="5" size-xs="12">
           <div text-center>
-              <ion-img name="solatTime" (click)="goToSolatTime()" class="centerPoint" style="width: 150px; height: 100px" src="assets/solat-time.jpg"></ion-img>
+              <ion-icon name="clock" (click)="goToSolatTime()" class="centerPoint" ></ion-icon>
               <ion-item text-center><ion-label>Solat Time</ion-label></ion-item>
           </div>
         </ion-col>
     </ion-row>
     <ion-row justify-content-center>
-        <ion-col align-self-center size-sm>
+        <ion-col align-self-start size-md="6" size-lg="5" size-xs="12">
           <div text-center>
-              <ion-img name="mosque" (click)="goToMosque()" class="centerPoint" style="width: 150px; height: 100px" src="assets/mosque.png"></ion-img>
+              <ion-icon name="hand" (click)="goToMosque()" class="centerPoint"></ion-icon>
               <ion-item text-center><ion-label>Mosque Locator</ion-label></ion-item>
           </div>
         </ion-col>
-        <ion-col align-self-center size-sm>
+        <ion-col align-self-start size-md="6" size-lg="5" size-xs="12" >
             <div text-center>
-                <ion-img name="restaurant" (click)="goToRestaurant()" class="centerPoint" style="width: 150px; height: 100px" src="assets/restaurant.png"></ion-img>
+                <ion-icon name="restaurant"  (click)="goToRestaurant()" class="centerPoint"></ion-icon>
                 <ion-item text-center><ion-label>Restaurant Locator</ion-label></ion-item>
             </div>
           </ion-col>
       </ion-row>
       <ion-row justify-content-center>
-          <ion-col align-self-center size-sm>
+          <ion-col align-self-start size-md="6" size-lg="5" size-xs="12">
             <div text-center>
-                <ion-img name="weather" (click)="goToWeather()" class="centerPoint" style="width: 150px; height: 100px" src="assets/weather.png"></ion-img>
+                <ion-icon name="partly-sunny" (click)="goToWeather()" class="centerPoint"></ion-icon>
                 <ion-item text-center><ion-label>Weather Forecast</ion-label></ion-item>
             </div>
           </ion-col>
-          <ion-col align-self-center size-sm>
+          <ion-col align-self-start size-md="6" size-lg="5" size-xs="12">
               <div text-center>
-                  <ion-img name="musafir" (click)="goToMusafir()" class="centerPoint" style="width: 150px; height: 100px" src="assets/musafir.png"></ion-img>
+                <ion-icon name="airplane" (click)="goToMusafir()" class="centerPoint"></ion-icon>
                   <ion-item text-center><ion-label>Musafir Verification</ion-label></ion-item>
               </div>
             </ion-col>
 
             <ion-col align-self-start size-md="6" size-lg="5" size-xs="12">
               <div text-center>
-                <ion-img name="map" (click)="goMap()" class="centerPoint" style="width: 150px; height: 100px" src="assets/map.png"></ion-img>
+                <ion-icon name="map" (click)="goMap()" class="centerPoint"></ion-icon>
                 <ion-item text-center><ion-label>Map</ion-label></ion-item>
               </div>
             </ion-col>

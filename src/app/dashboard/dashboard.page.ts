@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from 'chart.js';
 import { NavController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import * as firebase from 'firebase';
 
 @Component({
@@ -9,12 +10,13 @@ import * as firebase from 'firebase';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  @ViewChild('doughnutCanvas',{ static: true }) doughnutCanvas: ElementRef;
+  @ViewChild('barCanvas',{ static: true }) barCanvas: ElementRef;
 
-  private doughnutChart: Chart;
+  private barChart: Chart;
 
   constructor(
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public alertController: AlertController,
     ) {
   }
   
@@ -23,24 +25,42 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit() {
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-      type: "doughnut",
+    this.barChart = new Chart(this.barCanvas.nativeElement, {
+      type: "bar",
       data: {
         labels: ["Subuh", "Zohor", "Asar", "Maghrib", "Isya'"],
         datasets: [
           {
-            label: "Solat Status",
-            data: [1, 1, 1, 1, 1],
+            label: "# of Successful Rakaat",
+            data: [0, 1, 1, 1, 0],
             backgroundColor: [
-              "rgba(75, 192, 192, 0.4)",
-              "rgba(75, 192, 192, 0.4)",
-              "rgba(75, 192, 192, 0.4)",
-              "rgba(255, 99, 132, 0.4)",
-              "rgba(255, 99, 132, 0.4)"
+              "rgba(255, 99, 132, 0.5)",
+              "rgba(0, 255, 0, 0.5)",
+              "rgba(0, 255, 0, 0.5)",
+              "rgba(0, 255, 0, 0.5)",
+              "rgba(153, 102, 255, 0.5)"
             ],
-            hoverBackgroundColor: ["#2BA62E", "#2BA62E", "#2BA62E", "#FF6384", "#FF6384"]
+            borderColor: [
+              "rgba(255,99,132,1)",
+              "rgba(0, 255, 0, 1)",
+              "rgba(0, 255, 0, 1)",
+              "rgba(0, 255, 0, 1)",
+              "rgba(153, 102, 255, 1)"
+            ],
+            borderWidth: 1
           }
         ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
       }
     });
   }
@@ -54,8 +74,26 @@ export class DashboardPage implements OnInit {
     console.log('okay')
 
   }
-  goToQiblat() {
-    this.navCtrl.navigateForward('https://qiblafinder.withgoogle.com');
+
+  onUpdates(){
+    var currentUID = firebase.auth().currentUser.uid
+    firebase.firestore().collection('user').doc(currentUID).update({
+              status : false
+            })
+
+    this.updateStatusAlert()
+    console.log('okay')
+  }
+
+  async updateStatusAlert() {
+    const alert = await this.alertController.create({
+      header: 'Musafir Status',
+      subHeader: 'Successful',
+      message: 'Musafir status successfully updated !',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
   goToMosque() {
     this.navCtrl.navigateForward('/tabs/nmosque');
@@ -71,5 +109,8 @@ export class DashboardPage implements OnInit {
   }
   goToSolatTime() {
     this.navCtrl.navigateForward('/tabs/tab5');
+  }
+  goToWeather(){
+    this.navCtrl.navigateForward('tabs/tab9');
   }
 }
