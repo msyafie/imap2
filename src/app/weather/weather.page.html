@@ -1,71 +1,86 @@
-
-    
 <ion-content>
-  <div class="notMobile">
-    <div [ngClass]="(ampm < 18)?'container':'container-night'">
+    <div class="notMobile">
+        <div [ngClass]="(ampm < 18)?'container':'container-night'">
 
-      <div class="header">
-        <div class="city">{{cityName}}</div>
-        <div class="condition">{{weather}}</div>
-        <div class="temp">{{temp}}&deg;</div>
-      </div>
+            <div class="header">
+                <div class="city">{{cityName}}</div>
+                <div class="condition">{{weather}}</div>
+                <div class="temp">{{temp}}&deg;</div>
 
-      <div class="data">
-        <div>{{day}}</div>
-        <div class="high">{{tempMax}}&deg;</div>
-        <div class="low">{{tempMin}}&deg;</div>
-      </div>
 
-      <div class="line"></div>
+                <div class="icon">{{icon}}</div>
 
-      <div class="info">
-        <div class="label">
-          <p>Sunrise</p>
-          <p>Sunset</p>
+
+
+            </div>
+
+            <div class="data">
+                <div>{{day}}</div>
+
+
+                <ion-text color="">
+                    <h5>High Temp</h5>
+                </ion-text>
+
+                <div class="high">{{tempMax}}&deg;</div>
+                <ion-text color="">
+                    <h5>Low Temp</h5>
+                </ion-text>
+                <div class="low">{{tempMin}}&deg;</div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="info">
+                <div class="label">
+                    <ion-icon name="sunny"></ion-icon>
+                    <p>Sunrise</p>
+                    <ion-icon name="moon"></ion-icon>
+                    <p>Sunset</p>
+                </div>
+
+                <div class="infoName">
+                    <p>{{sunriseHour}}:{{sunriseMinute}}</p>
+                    <p class="unit">am</p>
+                    <p>{{sunsetHour}}:{{sunsetMinute}}</p>
+                    <p class='unit'>pm</p>
+                </div>
+            </div>
+            <div class="info">
+                <div class="label">
+                    <p>Humidity</p>
+                    <p>Pressure</p>
+                </div>
+
+                <div class="infoName">
+                    <p>{{humidity}}</p>
+                    <p class="percent">%</p>
+                    <p>{{pressure}}</p>
+                    <p class="inMg">inMg</p>
+                </div>
+            </div>
+            <div class="info">
+                <div class="label">
+                    <p>Wind Speed</p>
+                    <p>Looks Like</p>
+                </div>
+
+                <div class="infoName">
+                    <p>{{windSpeed}}</p>
+                    <p class="mph">mph</p>
+                    <p class="looks-like">{{looksLike}}</p>
+                </div>
+            </div>
+
+            <div class="bottomLine"></div>
+
+            <ion-fab class="changeBtn">
+                <ion-fab-button color="button" (click)="cityChange()">
+                    <ion-icon name="search"></ion-icon>
+                </ion-fab-button>
+            </ion-fab>
+
+
         </div>
-        
-        <div class="infoName">
-          <p>{{sunriseHour}}:{{sunriseMinute}}</p>
-          <p class="unit">am</p>
-          <p>{{sunsetHour}}:{{sunsetMinute}}</p>
-          <p class='unit'>pm</p>
-        </div>
-      </div>
-      <div class="info">
-        <div class="label">
-          <p>Humidity</p>
-          <p>Pressure</p>
-        </div>
-        
-        <div class="infoName">
-          <p>{{humidity}}</p>
-          <p class="percent">%</p>
-          <p>{{pressure}}</p>
-          <p class="inMg">inMg</p>
-        </div>
-      </div>
-      <div class="info">
-        <div class="label">
-          <p>Wind Speed</p>
-          <p>Looks Like</p>
-        </div>
-        
-        <div class="infoName">
-          <p>{{windSpeed}}</p>
-          <p class="mph">mph</p>
-          <p class="looks-like">{{looksLike}}</p>
-        </div>
-      </div>
-
-      <div class="bottomLine"></div>
-
-      <ion-fab class="changeBtn">
-        <ion-fab-button color="button" (click)="cityChange()">
-            <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
-    
-
-    </div>  
-  </div>
+    </div>
 </ion-content>
