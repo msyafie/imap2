@@ -1,32 +1,32 @@
 <ion-content>
+
+
+
+
     <div class="notMobile">
         <div [ngClass]="(ampm < 18)?'container':'container-night'">
 
             <div class="header">
                 <div class="city">{{cityName}}</div>
                 <div class="condition">{{weather}}</div>
+                <ion-card>
+                    <img [src]="icon" />
+                </ion-card>
                 <div class="temp">{{temp}}&deg;</div>
-
-
-                <div class="icon">{{icon}}</div>
-
-
-
+                <div>{{day}}</div>
             </div>
 
             <div class="data">
-                <div>{{day}}</div>
 
-
-                <ion-text color="">
+                <div class="high">{{tempMax}}&deg;</div>
+                <ion-text color="danger">
                     <h5>High Temp</h5>
                 </ion-text>
 
-                <div class="high">{{tempMax}}&deg;</div>
-                <ion-text color="">
+                <div class="low">{{tempMin}}&deg;</div>
+                <ion-text color="primary">
                     <h5>Low Temp</h5>
                 </ion-text>
-                <div class="low">{{tempMin}}&deg;</div>
             </div>
 
             <div class="line"></div>
@@ -37,12 +37,15 @@
                     <p>Sunrise</p>
                     <ion-icon name="moon"></ion-icon>
                     <p>Sunset</p>
+
                 </div>
 
                 <div class="infoName">
-                    <p>{{sunriseHour}}:{{sunriseMinute}}</p>
+                    <p style="color: green;">{{sunriseHour}}:{{sunriseMinute}}</p>
+
                     <p class="unit">am</p>
-                    <p>{{sunsetHour}}:{{sunsetMinute}}</p>
+                    <p style="color: green;">{{sunsetHour}}:{{sunsetMinute}}</p>
+
                     <p class='unit'>pm</p>
                 </div>
             </div>
@@ -53,9 +56,9 @@
                 </div>
 
                 <div class="infoName">
-                    <p>{{humidity}}</p>
+                    <p style="color: green;">{{humidity}}</p>
                     <p class="percent">%</p>
-                    <p>{{pressure}}</p>
+                    <p style="color: green;">{{pressure}}</p>
                     <p class="inMg">inMg</p>
                 </div>
             </div>
@@ -65,17 +68,17 @@
                     <p>Looks Like</p>
                 </div>
 
-                <div class="infoName">
-                    <p>{{windSpeed}}</p>
-                    <p class="mph">mph</p>
-                    <p class="looks-like">{{looksLike}}</p>
+                <div class=" infoName ">
+                    <p style="color: green;">{{windSpeed}}</p>
+                    <p class="mph ">mph</p>
+                    <p style="color: green;" class="looks-like ">{{looksLike}}</p>
                 </div>
             </div>
 
-            <div class="bottomLine"></div>
+            <div class="bottomLine "></div>
 
-            <ion-fab class="changeBtn">
-                <ion-fab-button color="button" (click)="cityChange()">
+            <ion-fab class="changeBtn ">
+                <ion-fab-button color="button " (click)="cityChange() ">
                     <ion-icon name="search"></ion-icon>
                 </ion-fab-button>
             </ion-fab>
@@ -83,4 +86,7 @@
 
         </div>
     </div>
+
+
+
 </ion-content>

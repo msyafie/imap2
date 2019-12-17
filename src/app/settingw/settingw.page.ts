@@ -36,9 +36,9 @@ export class SettingwPage implements OnInit {
         this.city = location.city;
         this.country = location.country;
       } else {
-        // Default to San Diego
-        this.city = 'San Diego';
-        this.country = 'US';
+        // Default to Serdang
+        this.city = 'Serdang';
+        this.country = 'Malaysia';
       }
     });
      }

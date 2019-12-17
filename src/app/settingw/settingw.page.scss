@@ -1,45 +1,44 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-
 ion-content {
-  color: white;
-  font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
 }
 
-ion-card{
-  display: flex;
-  flex-direction: column;
-  height: 100% !important;
-  margin: 0 !important;
-  background: linear-gradient(to top , white, rgb(60, 129, 233));
+ion-card {
+    display: flex;
+    flex-direction: column;
+    height: 100% !important;
+    margin: 0 !important;
+    background: linear-gradient(to top, white, rgb(60, 233, 124));
 }
 
 ion-card-title {
-  font-size: 2em;
+    font-size: 2em;
 }
 
 .button {
-  text-align: center;
-  margin: 1em auto;
-  width: 80%;
+    text-align: center;
+    margin: 1em auto;
+    width: 70%;
 }
 
 ion-item {
-  --ion-background-color: transparent;
+    --ion-background-color: transparent;
 }
 
 .location {
-  margin: 2em auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
 }
 
 .location p {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .location div {
-  margin-top: 2em;
+    margin-top: 2em;
 }

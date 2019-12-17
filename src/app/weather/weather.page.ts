@@ -120,16 +120,13 @@ export class WeatherPage implements OnInit {
           country: 'MY'
         }
       }
- 
- 
-    
     //API call to get data
     this.service.getData(this.location.city,this.location.country).subscribe((res:any) => {
       console.log('getData',res);
       this.cityName = res.name;
       this.country = res.sys.country;
       this.weather = res.weather[0].main;
-      this.icon = 'http://openweathermap.org/img/w/'+res.weather[0].icon+'.png';
+      this.icon = 'http://openweathermap.org/img/w/'+res.weather[0].icon+'.png'; 
       this.temp = res.main.temp.toFixed(1);
       this.tempMax = res.main.temp_max.toFixed(1);
       this.tempMin = res.main.temp_min.toFixed(1);
