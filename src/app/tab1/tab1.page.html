@@ -1,8 +1,8 @@
 <ion-header>
-    <ion-toolbar color="primary" center>
+    <ion-toolbar color="success" center>
        
-      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place" showCancelButton="always"></ion-searchbar>
-      <ion-icon name="locate" (click)="tryGeolocation()">Locate Me !</ion-icon>
+      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place" ></ion-searchbar>
+      <ion-button color="warning" expand="full" name="locate" (click)="tryGeolocation()">Locate Me !</ion-button>
     
     </ion-toolbar>
   </ion-header>

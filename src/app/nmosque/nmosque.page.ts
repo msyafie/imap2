@@ -65,7 +65,7 @@ export class NmosquePage {
         this.autocompleteItems = [];
         this.GooglePlaces.nearbySearch({
           location: results[0].geometry.location,
-          radius: '10000',
+          radius: '5000',
           types: ['mosque'], //check other types here https://developers.google.com/places/web-service/supported_types
           key: 'AIzaSyDsggnlDQ6iz5CapY_vpR0K2-VjJz5Jut4&libraries=places'
         }, (near_places) => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
+import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 
 
@@ -30,6 +31,7 @@ export class RegisterPage implements OnInit {
 
     private navCtrl: NavController,
     private authService: AuthenticationService,
+    public alertController: AlertController,
     private formBuilder: FormBuilder
   ) { }
 
@@ -51,8 +53,8 @@ export class RegisterPage implements OnInit {
      .then(res => {
        console.log(res);
        this.errorMessage = "";
-       this.successMessage = "Your account has been created. Please log in.";
-       this.navCtrl.navigateBack('');
+       this.succesfulRegister();
+       this.navCtrl.navigateBack('login');
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
@@ -64,5 +66,13 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateBack('');
   }
 
+  async succesfulRegister() {
+    const alert = await this.alertController.create({
+      header: 'Successful',
+      message: 'You are successfully registered !',
+      buttons: ['OK']
+    });
 
+    await alert.present();
+  }
 }
