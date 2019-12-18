@@ -50,7 +50,7 @@ export class Tab3Page {
     {
         if(this.dos <= 3){
         this.presentAlertConfirm()
-        console.log('yess')}
+        console.log('yes')}
 
         else
         {
