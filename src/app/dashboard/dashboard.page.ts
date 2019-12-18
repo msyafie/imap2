@@ -113,4 +113,5 @@ export class DashboardPage implements OnInit {
   goToWeather(){
     this.navCtrl.navigateForward('tabs/tab9');
   }
+  
 }

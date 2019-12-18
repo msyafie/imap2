@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -56,6 +57,7 @@ export class LoginPage implements OnInit {
       )
   }
 
+  
   goToRegisterPage() {
     this.navCtrl.navigateForward('/register');
   }

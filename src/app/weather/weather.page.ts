@@ -59,6 +59,7 @@ export class WeatherPage implements OnInit {
   getTimeOfDay() {
     let time = new Date().getHours();
     this.ampm = time;
+    console.log(time)
   }
 
   // Switch statement to get day of week .
