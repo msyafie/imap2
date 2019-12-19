@@ -10,6 +10,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+  today : number;
   @ViewChild('barCanvas',{ static: true }) barCanvas: ElementRef;
 
   private barChart: Chart;
@@ -25,27 +26,28 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit() {
+    this.today = Date.now();
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: "bar",
       data: {
         labels: ["Subuh", "Zohor", "Asar", "Maghrib", "Isya'"],
         datasets: [
           {
-            label: "# of Successful Rakaat",
-            data: [0, 1, 1, 1, 0],
+            label: "# of Unsuccessful Rakaat",
+            data: [1, 1, 1, 1, 1],
             backgroundColor: [
-              "rgba(255, 99, 132, 0.5)",
+              "rgba(255, 0, 0, 0.5)",
               "rgba(0, 255, 0, 0.5)",
               "rgba(0, 255, 0, 0.5)",
               "rgba(0, 255, 0, 0.5)",
-              "rgba(153, 102, 255, 0.5)"
+              "rgba(255, 0, 0, 0.5)"
             ],
             borderColor: [
-              "rgba(255,99,132,1)",
+              "rgba(255,0,0,1)",
               "rgba(0, 255, 0, 1)",
               "rgba(0, 255, 0, 1)",
               "rgba(0, 255, 0, 1)",
-              "rgba(153, 102, 255, 1)"
+              "rgba(255,0,0,1)"
             ],
             borderWidth: 1
           }

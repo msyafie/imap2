@@ -1,12 +1,13 @@
 <ion-header>
   <ion-toolbar color="success">
-    <ion-title slot='centerPoint'>Dashboard</ion-title>
-   
+    <ion-title text-center>Yusuf , السلام عليكم</ion-title>
   </ion-toolbar>
 </ion-header> 
 
 <ion-content padding>
-  <ion-item text-center><ion-label> السلام عليكم</ion-label> </ion-item>
+  <div text-center>
+    <ion-item text-center><ion-label>{{ today | date: 'dd MMM yyyy' }}</ion-label></ion-item>
+    </div>
   <ion-card size-sm>
     <ion-card-header> 
       Solat Performance
