@@ -65,8 +65,8 @@ export class DashboardPage implements OnInit {
         }
       }
     });
-
-    firebase.firestore().collection('user').where("uid","==", firebase.auth().currentUser.uid).onSnapshot
+  
+   firebase.firestore().collection('user').where("uid","==", firebase.auth().currentUser.uid).onSnapshot
     (doc => {
       doc.docChanges().forEach(docinfo =>{
         this.state.status = docinfo.doc.data().status
