@@ -1,7 +1,12 @@
 <ion-content>
 
 
-
+    <ion-header>
+        <ion-toolbar color="success">
+            <ion-title>Weather Forecast </ion-title>
+            <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon>
+        </ion-toolbar>
+    </ion-header>
 
     <div class="notMobile">
         <div [ngClass]="(ampm < 18)?'container':'container-night'">

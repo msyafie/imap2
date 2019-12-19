@@ -4,6 +4,8 @@ import { WeatherService} from '../services/weather.service';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { SettingwPage } from '../settingw/settingw.page';
+import { Platform, NavParams,NavController } from '@ionic/angular';
+
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.page.html',
@@ -38,9 +40,11 @@ export class WeatherPage implements OnInit {
 
   constructor(
     private storage: Storage,
+    private navCtrl: NavController,
     private service: WeatherService,
     private router: Router,
     private modal: ModalController) { }
+    
 
     // Show Modal
   async cityChange() {
@@ -149,6 +153,10 @@ export class WeatherPage implements OnInit {
  
     this.getTimeOfDay();
   }
+  backD() {
+    this.navCtrl.navigateForward('/dashboard');
+  }
+
   
 
 }
