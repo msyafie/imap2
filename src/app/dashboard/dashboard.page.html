@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-title slot='centerPoint'>Dashboard</ion-title>
-   
+    <ion-button fill="outline" size="small" color="warning" slot="end" (click)="logoutUser()">LogOut <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header> 
 
@@ -70,8 +70,9 @@
             <ion-col>
               <div text-center>
             <!-- <ion-button  size="small" color="primary" (click)="onGet()" slot='start'>?</ion-button> -->
-            <ion-label ><b>Musafir Status :</b> {{state.status}}</ion-label><br>
-            <ion-button fill="outline" size="small" (click)="onGet()"><ion-icon ios="ios-help" md="md-help"></ion-icon></ion-button>
+             <!-- <ion-icon name="map" (click)="goMap()" class="centerPoint"></ion-icon> -->
+            <ion-label ><b>Musafir Status :</b> {{message}}</ion-label><br>
+            <!-- <ion-button fill="outline" size="small" (click)="onGet()"><ion-icon ios="ios-help" md="md-help"></ion-icon></ion-button> -->
             <ion-button fill="outline" size="small" color="danger"  (click)="onUpdates()">DISABLE</ion-button>
               </div>
             </ion-col>

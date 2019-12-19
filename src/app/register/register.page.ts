@@ -24,6 +24,15 @@ export class RegisterPage implements OnInit {
     'password': [
       { type: 'required', message: 'Password is required.' },
       { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+    ],
+    'contact_no': [
+      { type: 'required', message: 'Contact Number is required.' }
+    ],
+    'full_name': [
+      { type: 'required', message: 'Full Name is required.' }
+    ],
+    'birth_date': [
+      { type: 'required', message: 'Date of Birth is required.' }
     ]
   };
   full_name: any;
@@ -46,20 +55,25 @@ export class RegisterPage implements OnInit {
         Validators.minLength(5),
         Validators.required
       ])),
+      contact_no: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      full_name: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      birth_date: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
     });
+
+    
   }
 
   tryRegister(value){
     this.authService.registerUser(value)
      .then(res => {
        console.log(res);
-       firebase.firestore().collection('user').doc(res.user.uid).set({
 
-        uid : res.uid,
-        email : res.email,
-        name: this.full_name,
-        
-       })
        this.errorMessage = "";
        this.succesfulRegister();
        this.navCtrl.navigateBack('login');

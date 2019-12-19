@@ -6,32 +6,51 @@
 
 <ion-content padding>
 
-  <!--The text field for Full Name
-        The variable name for this text field is "full_name"-->
-  <ion-item>
-    <ion-input name="full_name" type="text" placeholder="Full Name"></ion-input>
-  </ion-item>
-
-  <!--This is Gender selection
-        The variable name for the selection of female is named as "female"
-        The variable name for the selection of male is named as "male"-->
-  <ion-item>
-    <ion-label>Gender</ion-label>
-    <ion-select placeholder="Select">
-      <ion-select-option name="female" value="f">Female</ion-select-option>
-      <ion-select-option name="male" value="m">Male</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <!--This is Birth Date selection
-        The variable name for this field is named as "birth_date"-->
-  <ion-item>
-    <ion-label>Birth Date</ion-label>
-    <ion-datetime name="birth_date" display-format="DD-MM-YYYY"></ion-datetime>
-  </ion-item>
-
   <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
 
+    <!--The text field for Full Name
+        The variable name for this text field is "full_name"-->
+    <ion-item>
+      <ion-input name="full_name" type="text" placeholder="Full Name" formControlName="full_name" class="form-controll" required ></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.full_name">
+        <div class="error-message"
+          *ngIf="validations_form.get('full_name').hasError(validation.type) && (validations_form.get('full_name').dirty || validations_form.get('full_name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+     <!--This is Birth Date selection
+        The variable name for this field is named as "birth_date"-->
+  <ion-item >
+    <ion-input type="date" name="birth_date"  placeholder="Date of Birth" formControlName="birth_date" class="form-controll" required>
+  </ion-input>
+  </ion-item>
+
+  <div class="validation-errors">
+    <ng-container *ngFor="let validation of validation_messages.birth_date">
+      <div class="error-message"
+        *ngIf="validations_form.get('birth_date').hasError(validation.type) && (validations_form.get('birth_date').dirty || validations_form.get('birth_date').touched)">
+        {{ validation.message }}
+      </div>
+    </ng-container>
+  </div>
+
+    <!--This is Gender selection
+        The variable name for the selection of female is named as "female"
+        The variable name for the selection of male is named as "male"-->
+  <!-- <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select placeholder="Select">
+      <ion-select-option name="female" value="female">Female</ion-select-option>
+      <ion-select-option name="male" value="male">Male</ion-select-option>
+    </ion-select>
+  </ion-item> -->
+
+  
 
     <!--This is the text field for Email
           The varibale name of this text field is "email"-->
@@ -55,6 +74,15 @@
       </ion-input>
     </ion-item>
 
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="error-message"
+          *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
     <!--This is text field for Password Confirmation
             The varible name for this text field is "confirm_password"-->
     <ion-item>
@@ -65,18 +93,20 @@
                The varibale name of this text field is "contact_no"-->
     <ion-item>
       <ion-label>+60</ion-label>
-      <ion-input name="contact_no" type="number" placeholder="Contact Number" required></ion-input>
+      <ion-input name="contact_no" type="number" placeholder="Contact Number" formControlName="contact_no" class="form-controll" required></ion-input>
     </ion-item>
-
-
+<!-- 
+    same here as well -->
     <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.password">
+      <ng-container *ngFor="let validation of validation_messages.contact_no">
         <div class="error-message"
-          *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+          *ngIf="validations_form.get('contact_no').hasError(validation.type) && (validations_form.get('contact_no').dirty || validations_form.get('contact_no').touched)">
           {{ validation.message }}
         </div>
       </ng-container>
     </div>
+
+   
 
     <br>
 

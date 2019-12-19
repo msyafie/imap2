@@ -21,8 +21,10 @@ export class DashboardPage implements OnInit {
   }
   
   state = {
-    status
+    status: true
   }
+
+  message 
 
   ngOnInit() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
@@ -63,16 +65,35 @@ export class DashboardPage implements OnInit {
         }
       }
     });
-  }
-  onGet(){
-    firebase.firestore().collection('user').doc(firebase.auth().currentUser.uid).get().then
+
+    firebase.firestore().collection('user').where("uid","==", firebase.auth().currentUser.uid).onSnapshot
     (doc => {
-      this.state.status = doc.data().status
+      doc.docChanges().forEach(docinfo =>{
+        this.state.status = docinfo.doc.data().status
+        if(this.state.status === false){
+          this.message = "inactive"
+        }
+        else{
+          this.message = "active"
+        }
+      })     
     })
 
-    return status 
-    console.log('okay')
 
+  }
+  logoutUser(){
+    return new Promise((resolve, reject) => {
+      if(firebase.auth().currentUser){
+        firebase.auth().signOut()
+        .then(() => {
+          this.goToLogin();
+          console.log("LOG Out");
+          resolve();
+        }).catch((error) => {
+          reject();
+        });
+      }
+    })
   }
 
   onUpdates(){
@@ -113,5 +134,8 @@ export class DashboardPage implements OnInit {
   goToWeather(){
     this.navCtrl.navigateForward('tabs/tab9');
   }
-  
+  goToLogin(){
+    this.navCtrl.navigateForward('login');
+  }
+
 }
