@@ -1,12 +1,13 @@
 <ion-header>
   <ion-toolbar color="success">
-    <ion-title slot='centerPoint'>Dashboard</ion-title>
-    <ion-button fill="outline" size="small" color="warning" slot="end" (click)="logoutUser()">LogOut <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon></ion-button>
+    <ion-title><h1>{{nama}}, السلام عليكم</h1></ion-title>
   </ion-toolbar>
 </ion-header> 
 
 <ion-content padding>
-  <ion-item text-center><ion-label> السلام عليكم</ion-label> </ion-item>
+  <div text-center>
+    <ion-item text-center><ion-label>{{ today | date: 'dd MMMM yyyy' }}</ion-label></ion-item>
+    </div>
   <ion-card size-sm>
     <ion-card-header> 
       Solat Performance
@@ -79,4 +80,5 @@
         </ion-row>
 
   </ion-grid>
+  <ion-button fill="outline" size="small" color="warning" class="centerPoint" (click)="logoutUser()">LogOut <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon></ion-button>
 </ion-content>
