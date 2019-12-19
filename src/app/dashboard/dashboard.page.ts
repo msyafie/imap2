@@ -24,9 +24,7 @@ export class DashboardPage implements OnInit {
   state = {
     status: true
   }
-  nama = {
-    name : String
-  }
+  name
   
 
   message 
@@ -88,7 +86,7 @@ export class DashboardPage implements OnInit {
     firebase.firestore().collection('user').where("uid","==", firebase.auth().currentUser.uid).onSnapshot
     (doc => {
       doc.docChanges().forEach(docinfo =>{
-        this.nama.name = docinfo.doc.data().name
+        this.name = docinfo.doc.data().name
       })     
     })
 
