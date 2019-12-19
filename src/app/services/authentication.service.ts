@@ -14,7 +14,12 @@ export class AuthenticationService {
       .then(userInfo => {
         firebase.firestore().collection('user').doc(userInfo.user.uid).set({
           status: false,
-          uid: userInfo.user.uid
+          uid: userInfo.user.uid,
+          contact: value.contact_no,
+          email: value.email,
+          name : value.full_name,
+          dob : value.birth_date
+          //save here
         }).then(
           res => resolve(res),
           err => reject(err))
@@ -30,6 +35,7 @@ export class AuthenticationService {
         err => reject(err))
     })
    }
+   
    logoutUser(){
     return new Promise((resolve, reject) => {
       if(firebase.auth().currentUser){

@@ -22,8 +22,14 @@ export class DashboardPage implements OnInit {
   }
   
   state = {
-    status
+    status: true
   }
+  nama = {
+    name : String
+  }
+  
+
+  message 
 
   ngOnInit() {
     this.today = Date.now();
@@ -65,16 +71,43 @@ export class DashboardPage implements OnInit {
         }
       }
     });
-  }
-  onGet(){
-    firebase.firestore().collection('user').doc(firebase.auth().currentUser.uid).get().then
+
+    firebase.firestore().collection('user').where("uid","==", firebase.auth().currentUser.uid).onSnapshot
     (doc => {
-      this.state.status = doc.data().status
+      doc.docChanges().forEach(docinfo =>{
+        this.state.status = docinfo.doc.data().status
+        if(this.state.status === false){
+          this.message = "Inactive"
+        }
+        else{
+          this.message = "Active"
+        }
+      })     
     })
 
-    return status 
-    console.log('okay')
+    firebase.firestore().collection('user').where("uid","==", firebase.auth().currentUser.uid).onSnapshot
+    (doc => {
+      doc.docChanges().forEach(docinfo =>{
+        this.nama.name = docinfo.doc.data().name
+      })     
+    })
 
+
+
+  }
+  logoutUser(){
+    return new Promise((resolve, reject) => {
+      if(firebase.auth().currentUser){
+        firebase.auth().signOut()
+        .then(() => {
+          this.goToLogin();
+          console.log("LOG Out");
+          resolve();
+        }).catch((error) => {
+          reject();
+        });
+      }
+    })
   }
 
   onUpdates(){
@@ -115,5 +148,8 @@ export class DashboardPage implements OnInit {
   goToWeather(){
     this.navCtrl.navigateForward('tabs/tab9');
   }
-  
+  goToLogin(){
+    this.navCtrl.navigateForward('login');
+  }
+
 }

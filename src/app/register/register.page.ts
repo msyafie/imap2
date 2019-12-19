@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { AuthenticationService } from '../services/authentication.service';
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
-
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-register',
@@ -24,8 +24,18 @@ export class RegisterPage implements OnInit {
     'password': [
       { type: 'required', message: 'Password is required.' },
       { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+    ],
+    'contact_no': [
+      { type: 'required', message: 'Contact Number is required.' }
+    ],
+    'full_name': [
+      { type: 'required', message: 'Full Name is required.' }
+    ],
+    'birth_date': [
+      { type: 'required', message: 'Date of Birth is required.' }
     ]
   };
+  full_name: any;
 
   constructor(
 
@@ -45,13 +55,25 @@ export class RegisterPage implements OnInit {
         Validators.minLength(5),
         Validators.required
       ])),
+      contact_no: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      full_name: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      birth_date: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
     });
+
+    
   }
 
   tryRegister(value){
     this.authService.registerUser(value)
      .then(res => {
        console.log(res);
+
        this.errorMessage = "";
        this.succesfulRegister();
        this.navCtrl.navigateBack('login');
@@ -63,7 +85,7 @@ export class RegisterPage implements OnInit {
   }
 
   goLoginPage(){
-    this.navCtrl.navigateBack('');
+    this.navCtrl.navigateBack('login');
   }
 
   async succesfulRegister() {

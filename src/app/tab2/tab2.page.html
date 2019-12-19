@@ -2,9 +2,15 @@
   
     
     <ion-toolbar color="success">
-      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Find Restaurants"></ion-searchbar>
-      <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon>
+      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Find Restaurants" showCancelButton="always"></ion-searchbar>
+      <!-- <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon> -->
     </ion-toolbar>
+    <ion-card>
+      <ion-card-content>
+          Type in location name at search bar above to search nearby restaurants within that place.
+          <ion-button ion-button color="danger" shape="round" href="https://www.zabihah.com/">Zabiha App</ion-button>
+        </ion-card-content>
+  </ion-card>
   </ion-header>
   
   <ion-content>
@@ -16,14 +22,7 @@
     <ion-grid *ngIf="nearbyItems.length == 0">
       <ion-row>
         <ion-col col-12>
-            <ion-card>
-                <ion-card-content>
-                    Type in location name at search bar above to search nearby restaurants within that place.
-                    <ion-button ion-button color="danger" shape="round" href="https://www.zabihah.com/">Zabiha App</ion-button>
-
-
-                  </ion-card-content>
-            </ion-card>
+           
         </ion-col>
       </ion-row>
     </ion-grid>
