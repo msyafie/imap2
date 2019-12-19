@@ -1,12 +1,14 @@
 <ion-header>
     <ion-toolbar color="success">
       
-      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Find Mosque"></ion-searchbar>
-      <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon>
-  
-      
+      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Find Mosque" showCancelButton="always"></ion-searchbar>
+      <!-- <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon> -->
     </ion-toolbar>
-    
+    <ion-card>
+      <ion-card-content>
+          Enter location name to search nearby mosque within that place. 
+        </ion-card-content>
+  </ion-card>
   </ion-header>
 
   <ion-content>
@@ -18,11 +20,7 @@
       <ion-grid *ngIf="nearbyItems.length == 0">
         <ion-row>
           <ion-col col-12>
-              <ion-card>
-                  <ion-card-content>
-                      Enter location name to search nearby mosque within that place. 
-                    </ion-card-content>
-              </ion-card>
+             
           </ion-col>
         </ion-row>
       </ion-grid>

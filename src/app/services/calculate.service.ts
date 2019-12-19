@@ -12,10 +12,14 @@ const httpOptions = {
   {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "http://localhost:8100",
+   
     
   }),
 withCredentials: true,
 };
+
+
+
 
 @Injectable({
   providedIn: 'root'

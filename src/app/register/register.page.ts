@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { AuthenticationService } from '../services/authentication.service';
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
-
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-register',
@@ -26,6 +26,7 @@ export class RegisterPage implements OnInit {
       { type: 'minlength', message: 'Password must be at least 5 characters long.' }
     ]
   };
+  full_name: any;
 
   constructor(
 
@@ -52,6 +53,13 @@ export class RegisterPage implements OnInit {
     this.authService.registerUser(value)
      .then(res => {
        console.log(res);
+       firebase.firestore().collection('user').doc(res.user.uid).set({
+
+        uid : res.uid,
+        email : res.email,
+        name: this.full_name,
+        
+       })
        this.errorMessage = "";
        this.succesfulRegister();
        this.navCtrl.navigateBack('login');
@@ -63,7 +71,7 @@ export class RegisterPage implements OnInit {
   }
 
   goLoginPage(){
-    this.navCtrl.navigateBack('');
+    this.navCtrl.navigateBack('login');
   }
 
   async succesfulRegister() {

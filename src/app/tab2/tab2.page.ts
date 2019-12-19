@@ -37,7 +37,6 @@ export class Tab2Page {
     this.loading = this.loadingCtrl.create();
   }
 
-
   updateSearchResults(){
     if (this.autocomplete.input == '') {
       this.autocompleteItems = [];
@@ -85,8 +84,18 @@ export class Tab2Page {
   }
 
   backD() {
-    this.navCtrl.navigateForward('/dashboard');
+    this.navCtrl.navigateForward('/tabs/tab2');
+  
   }
+
+  // doRefresh(autocompleteItems) {
+  //   console.log('Begin async operation');
+
+  //   setTimeout(() => {
+  //     console.log('Async operation has ended');
+  //     autocompleteItems.target.complete();
+  //   }, 2000);
+  // } 
   
   }
 
