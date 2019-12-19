@@ -17,20 +17,19 @@
             </ion-item>
 
             <div class="button">
-                <ion-button color="" (click)="saveForm()">
-                    <ion-icon color="" name="add"></ion-icon>
+                <ion-button size="medium" color="" (click)="saveForm()">
+                    Submit
                 </ion-button>
             </div>
 
             <div class='location'>
-                <p>Get current location</p>
-                <div>
-                    <ion-fab horizontal="center">
-                        <ion-fab-button color="button" (click)="getLocation()">
-                            <ion-icon name="navigate"></ion-icon>
-                        </ion-fab-button>
-                    </ion-fab>
+
+                <div text-center>
+                    <ion-button align-self-center justify-content-center size="medium" color="warning" (click)="getLocation()">Locate me
+                        <ion-icon name="help"></ion-icon>
+                    </ion-button>
                 </div>
+
             </div>
 
         </ion-card-content>
