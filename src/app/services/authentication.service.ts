@@ -15,7 +15,6 @@ export class AuthenticationService {
         firebase.firestore().collection('user').doc(userInfo.user.uid).set({
           status: false,
           uid: userInfo.user.uid,
-          contact: value.contact_no,
           email: value.email,
           name : value.full_name,
           dob : value.birth_date

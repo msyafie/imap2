@@ -5,9 +5,11 @@
       <!-- <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon> -->
     </ion-toolbar>
     <ion-card>
+
       <ion-card-content>
-          Enter location name to search nearby mosque within that place. 
+         INSTRUCTION : Enter location name to search nearby mosque within that particular place and select location from list. 
         </ion-card-content>
+        <ion-card-title text-center>Powered by Google Map Places</ion-card-title>
   </ion-card>
   </ion-header>
 
@@ -56,8 +58,8 @@
         <ion-list *ngIf="nearbyItems.length > 0">
             <ion-item *ngFor="let place of nearbyItems">
               <ion-col>
-                  <ion-card>
-                      <ion-card-content>
+                  <ion-card color="tertiary">
+                      <ion-card-content >
                           <ion-label>Place Name : {{place.name}}</ion-label>
                           <ion-label>Address: {{place.vicinity}}</ion-label>
                           <ion-label>Rating: {{place.rating}}</ion-label>

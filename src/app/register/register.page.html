@@ -26,7 +26,7 @@
      <!--This is Birth Date selection
         The variable name for this field is named as "birth_date"-->
   <ion-item >
-    <ion-input type="date" name="birth_date"  placeholder="Date of Birth" formControlName="birth_date" class="form-controll" required>
+    <ion-input type="date" name="birth_date"  formControlName="birth_date" class="form-controll" required>Date of Birth:
   </ion-input>
   </ion-item>
 
@@ -85,26 +85,26 @@
 
     <!--This is text field for Password Confirmation
             The varible name for this text field is "confirm_password"-->
-    <ion-item>
+    <!-- <ion-item>
       <ion-input name="confirm_password" type="password" placeholder="Confirm Password" required></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <!--This is the text field for Contact Number
                The varibale name of this text field is "contact_no"-->
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>+60</ion-label>
       <ion-input name="contact_no" type="number" placeholder="Contact Number" formControlName="contact_no" class="form-controll" required></ion-input>
     </ion-item>
-<!-- 
+
     same here as well -->
-    <div class="validation-errors">
+    <!-- <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.contact_no">
         <div class="error-message"
           *ngIf="validations_form.get('contact_no').hasError(validation.type) && (validations_form.get('contact_no').dirty || validations_form.get('contact_no').touched)">
           {{ validation.message }}
         </div>
       </ng-container>
-    </div>
+    </div> --> 
 
    
 
@@ -121,13 +121,14 @@
         <h6><a href="">Accept terms & conditions</a></h6>
       </div>
     </div>
+    
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
 
     <!--This is the button "Sign Up"-->
     <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" size="large" type="submit"
       expand="block">Sign Up</ion-button>
 
-    <label class="error-message">{{errorMessage}}</label>
-    <label class="success-message">{{successMessage}}</label>
   </form>
   <p class="go-to-login">Already have an account? <a (click)="goLoginPage()">Try to Log In.</a></p>
 </ion-content>

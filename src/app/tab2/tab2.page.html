@@ -6,10 +6,12 @@
       <!-- <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon> -->
     </ion-toolbar>
     <ion-card>
+      
       <ion-card-content>
-          Type in location name at search bar above to search nearby restaurants within that place.
-          <ion-button ion-button color="danger" shape="round" href="https://www.zabihah.com/">Zabiha App</ion-button>
+        INSTRUCTION : Enter location name to search nearby restaurants within that particular place and select location from list.<br> 
+          <ion-button ion-button color="danger" shape="round" href="https://www.zabihah.com/">Click here for Zabiha App</ion-button>
         </ion-card-content>
+        <ion-card-title text-center>Powered by Google Map Places</ion-card-title>
   </ion-card>
   </ion-header>
   
@@ -53,7 +55,7 @@
     <ion-list *ngIf="nearbyItems.length > 0">
         <ion-item *ngFor="let place of nearbyItems">
           <ion-col>
-              <ion-card>
+              <ion-card color="tertiary">
                   <ion-card-content>
                       <ion-label>Place Name : {{place.name}}</ion-label>
                       <ion-label>Address: {{place.vicinity}}</ion-label>

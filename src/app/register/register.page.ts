@@ -25,9 +25,6 @@ export class RegisterPage implements OnInit {
       { type: 'required', message: 'Password is required.' },
       { type: 'minlength', message: 'Password must be at least 5 characters long.' }
     ],
-    'contact_no': [
-      { type: 'required', message: 'Contact Number is required.' }
-    ],
     'full_name': [
       { type: 'required', message: 'Full Name is required.' }
     ],
@@ -36,6 +33,7 @@ export class RegisterPage implements OnInit {
     ]
   };
   full_name: any;
+  errorMessages: any;
 
   constructor(
 
@@ -53,9 +51,6 @@ export class RegisterPage implements OnInit {
       ])),
       password: new FormControl('', Validators.compose([
         Validators.minLength(5),
-        Validators.required
-      ])),
-      contact_no: new FormControl('', Validators.compose([
         Validators.required
       ])),
       full_name: new FormControl('', Validators.compose([
@@ -79,7 +74,8 @@ export class RegisterPage implements OnInit {
        this.navCtrl.navigateBack('login');
      }, err => {
        console.log(err);
-       this.errorMessage = err.message;
+       this.unsuccesfulRegister();
+       this.errorMessage= err.message;
        this.successMessage = "";
      })
   }
@@ -92,6 +88,15 @@ export class RegisterPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Successful',
       message: 'You are successfully registered !',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+  async unsuccesfulRegister() {
+    const alert = await this.alertController.create({
+      header: 'UnSuccessful',
+      message: 'Please try to register again !',
       buttons: ['OK']
     });
 
