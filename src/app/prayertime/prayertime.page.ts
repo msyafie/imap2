@@ -57,20 +57,7 @@ export class PrayertimePage implements OnInit {
       }
     });
 
-    //Get Storage Selected Zon
-     this.storage.get('subuh').then((val)=>{
-      console.log(val);
-
-      if(val!=null){
-        //if is not null, pull from storage
-        let subuh=JSON.parse(val);
-        
-      }
-      else{
-        //default to petaling
-        console.log("error");
-      }
-    });
+    
    
     //this. getLocate(this.zon="petaling")
     this.getLocation(this.zon);
@@ -201,7 +188,7 @@ getLocation(zon){
     this.zohor
     this.asar
     this.maghrib
-    this. isyak
+    this.isyak
 
     this.storage.set('zon',JSON.stringify(this.zon))
     this.storage.set('subuh',JSON.stringify(this.subuh))
