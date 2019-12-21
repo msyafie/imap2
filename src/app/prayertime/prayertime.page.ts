@@ -23,10 +23,11 @@ export class PrayertimePage implements OnInit {
  maghrib: string;
  isyak : string;
  formattedDate: string;
- day: string;
- autocompleteItems;
-  autocomplete;
-  filteredItems;
+ day:string;
+ 
+ zonn:string;
+ negeris:string;
+ 
 
 
   constructor(
@@ -41,14 +42,42 @@ export class PrayertimePage implements OnInit {
 
   ngOnInit() {
    
+     //Get Storage Selected Zon
+     this.storage.get('zon').then((val)=>{
+      //console.log(val);
+
+      if(val!=null){
+        //if is not null, pull from storage
+        let zon=JSON.parse(val);
+        
+      }
+      else{
+        //default to petaling
+        this.zon= 'petaling';
+      }
+    });
+
+    //Get Storage Selected Zon
+     this.storage.get('subuh').then((val)=>{
+      console.log(val);
+
+      if(val!=null){
+        //if is not null, pull from storage
+        let subuh=JSON.parse(val);
+        
+      }
+      else{
+        //default to petaling
+        console.log("error");
+      }
+    });
    
-    this. getLocate(this.zon="petaling")
+    //this. getLocate(this.zon="petaling")
     this.getLocation(this.zon);
     this.getFormattedDate();
+    this.getDay();
     
-    this.storage.get('Subuh').then((val)=>{
-      this.subuh =val;
-    });
+    
   }
 
 
@@ -58,8 +87,10 @@ getLocation(zon){
     this.data= JSON.stringify(data);
      // console.log( 'getData',data);
       var obj =<any> data;
-        this.zons=obj.data[0].negeri;
-       this.negeri=obj.data[0].zon;
+        this.zons=obj.data[0].zon;
+        this.zonn= this.zons.charAt(0).toUpperCase() + this.zons.slice(1).toLowerCase();
+       this.negeri=obj.data[0].negeri;
+       this.negeris=this.negeri.charAt(0).toUpperCase() + this.negeri.slice(1).toLowerCase();
        this.subuh=obj.data[0].waktu_solat[1].time;
        this.syuruk=obj.data[0].waktu_solat[2].time;
        this.zohor=obj.data[0].waktu_solat[3].time;
@@ -74,13 +105,13 @@ getLocation(zon){
    
   }
 //default zon
- getLocate(zon="petaling"){
+ /*getLocate(zon="petaling"){
     this.prayerService.getData(zon).subscribe((data)=>{
       this.data= JSON.stringify(data);
      // console.log( 'getData',data);
       var obj =<any> data;
-       this.zon=obj.data[0].negeri;
-       this.negeri=obj.data[0].zon;
+       this.zon=obj.data[0].zon;
+       this.negeri=obj.data[0].negeri;
        this.subuh=obj.data[0].waktu_solat[1].time;
        this.syuruk=obj.data[0].waktu_solat[2].time;
        this.zohor=obj.data[0].waktu_solat[3].time;
@@ -88,23 +119,45 @@ getLocation(zon){
        this.maghrib=obj.data[0].waktu_solat[5].time;
        this.isyak=obj.data[0].waktu_solat[6].time;
 
-       this.storage.set("Subuh",this.subuh );
+       
     
     })
-  }
+  }*/
 
   //get Day of the week
   getDay(){
-    let date = new Date();
-      var dayArray = new Array(7);
-      dayArray [0] = "Sunday";
-      dayArray [1] = "Monday";
-      dayArray [2] = "Tuesday";
-      dayArray [3] = "Wednesday";
-      dayArray [4] = "Thursday";
-      dayArray [5] = "Friday";
-      dayArray [6] = "Saturday";
-     this.day = dayArray[date.getDay()];
+    let date = new Date().getDay();
+    switch(date) {
+      case 0:
+      this.day = 'Sunday';
+      break;
+  
+      case 1:
+      this.day = 'Monday';
+      break;
+  
+      case 2:
+      this.day = 'Tuesday';
+      break;
+  
+      case 3:
+      this.day = 'Wednesday';
+      break;
+  
+      case 4:
+      this.day = 'Thursday';
+      break;
+  
+      case 5:
+      this.day = 'Friday';
+      break;
+  
+      case 6:
+      this.day = 'Saturday';
+      break;
+  
+
+    }
   }
   
 //get month of the year
@@ -138,6 +191,27 @@ getLocation(zon){
     this.navCtrl.navigateForward('/dashboard');
   }
 
+  //save location zon
+  saveZon(){
+    
+    this.zon
+    //list prayers
+    this.subuh
+    this.syuruk
+    this.zohor
+    this.asar
+    this.maghrib
+    this. isyak
+
+    this.storage.set('zon',JSON.stringify(this.zon))
+    this.storage.set('subuh',JSON.stringify(this.subuh))
+    this.storage.set('syuruk',JSON.stringify(this.syuruk))
+    this.storage.set('zohor',JSON.stringify(this.zohor))
+    this.storage.set('asar',JSON.stringify(this.asar))
+    this.storage.set('maghrib',JSON.stringify(this.maghrib))
+    this.storage.set('isyak',JSON.stringify(this.isyak))
+
+  }
  
 }
 
