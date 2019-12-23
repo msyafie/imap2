@@ -1,9 +1,82 @@
 <ion-header>
   <ion-toolbar color="success">
-    <ion-title>storageP</ion-title>
-  </ion-toolbar  >
+    <ion-title>Prayer Times Countries </ion-title>
+    <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  subuh {{subuh}}
+<ion-content padding>
+
+  <div class ="bg-class">
+
+    <form #form= "ngForm" (ngSubmit)="getCity( userInput)">
+      <ion-item >
+     <ion-input  type="text" [(ngModel)]="userInput" placeholder=" Enter city"  [ngModelOptions]="{standalone: true}"></ion-input>
+     <ion-button  type="submit">Search </ion-button>
+      </ion-item>
+   
+
+  
+   <div class="ion-text-center">
+     <h3 > Prayer Time in {{city}} {{country}}  {{country_code}}</h3>
+     
+     <h3> Today {{day}} {{formattedDate}} </h3>
+   </div>
+    
+   <div class=" ion-text-center">
+ 
+    <!--this is for card display subuh -->
+    <ion-grid>
+        <ion-col class="ion-no-padding">
+         <ion-card class="cardHolder">
+           <ion-card-content style="font-size :20px" class="fixline">
+            <ion-label> Fajr  {{Fajr}} AM </ion-label> 
+             
+           </ion-card-content>
+         </ion-card >
+       
+
+           <!--this is for card display zohor -->
+         <ion-card class="cardHolder">
+            <ion-card-content style="font-size :20px" class="fixline">
+            Zohor {{Dhuhr}} PM
+            </ion-card-content>
+          </ion-card>
+
+           <!--this is for card display asar -->
+         <ion-card class="cardHolder">
+            <ion-card-content  style="font-size :20px" class="fixline">
+              Asar {{Asr}} PM
+            </ion-card-content>
+          </ion-card>
+
+           <!--this is for card display maghrib -->
+         <ion-card class="cardHolder">
+            <ion-card-content style="font-size :20px" class="fixline">
+             Maghrib {{Maghrib}} PM
+            </ion-card-content>
+          </ion-card>
+
+
+           <!--this is for card display isyak -->
+         <ion-card class="cardHolder">
+            <ion-card-content style="font-size :20px" class="fixline">
+             Isyak {{Isha}} PM
+            </ion-card-content>
+          </ion-card>
+
+         </ion-col>
+        
+        </ion-grid>
+
+       <!-- <ion-col>
+          <ion-button (click)="saveData()" color="success" shape="small" >Save PrayerTime</ion-button>
+      </ion-col>  -->
+               
+             
+   </div>
+</form>
+ 
+
+</div>
 </ion-content>

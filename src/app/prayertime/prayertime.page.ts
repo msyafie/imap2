@@ -28,7 +28,11 @@ export class PrayertimePage implements OnInit {
  zonn:string;
  negeris:string;
  
-
+//current time
+d = new Date();
+m = this.d.getMinutes();
+h = this.d.getHours();
+currentTime = this.h+this.m;
 
   constructor(
      private navCtrl: NavController,
@@ -55,6 +59,74 @@ export class PrayertimePage implements OnInit {
         //default to petaling
         this.zon= 'petaling';
       }
+      
+      //subuh storage
+     /* this.storage.get('subuh').then((val)=>{
+        this.subuh=val;
+        console.log(val)
+        var hrmm=this.subuh.split(":");
+      hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+      hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+      var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+      console.log(time)
+
+          //syuruk storage
+          this.storage.get('syuruk').then((val)=>{
+          this.syuruk=val;
+          console.log(val)
+          var hrmm=this.syuruk.split(":");
+          hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+          hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+          var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+          console.log(time)
+            
+            //zohor storage
+            this.storage.get('zohor').then((val)=>{
+            this.zohor=val;
+            console.log(val)
+            var hrmm=this.zohor.split(":");
+            hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+            hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+            var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+            console.log(time)
+
+            //asar storage
+            this.storage.get('asar').then((val)=>{
+              this.asar=val;
+              console.log(val)
+              var hrmm=this.asar.split(":");
+              hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+              hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+              var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+              console.log(time)
+
+              //maghrib storage
+              this.storage.get('maghrib').then((val)=>{
+                this.maghrib=val;
+                console.log(val)
+                var hrmm=this.maghrib.split(":");
+                hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+                hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+                var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+                console.log(time)
+
+                this.storage.get('isyak').then((val)=>{
+                  this.isyak=val;
+                  console.log(val)
+                  var hrmm=this.isyak.split(":");
+                  hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+                  hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+                  var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+                  console.log(time)
+                  
+                });
+              });
+            });
+          });
+        });
+      });*/
+
+
     });
 
     
@@ -63,7 +135,10 @@ export class PrayertimePage implements OnInit {
     this.getLocation(this.zon);
     this.getFormattedDate();
     this.getDay();
+    this.saveZon();
+    this.convertStrtoTime();
     
+   
     
   }
 
@@ -78,38 +153,38 @@ getLocation(zon){
         this.zonn= this.zons.charAt(0).toUpperCase() + this.zons.slice(1).toLowerCase();
        this.negeri=obj.data[0].negeri;
        this.negeris=this.negeri.charAt(0).toUpperCase() + this.negeri.slice(1).toLowerCase();
-       this.subuh=obj.data[0].waktu_solat[1].time;
+       this.subuh=obj.data[0].waktu_solat[1].time;    
        this.syuruk=obj.data[0].waktu_solat[2].time;
        this.zohor=obj.data[0].waktu_solat[3].time;
        this.asar=obj.data[0].waktu_solat[4].time;
        this.maghrib=obj.data[0].waktu_solat[5].time;
        this.isyak=obj.data[0].waktu_solat[6].time;
-     
+       
+       this.storage.set('subuh',JSON.stringify(this.subuh))
+       console.log(this.subuh  );
+
+       this.storage.set('syuruk',JSON.stringify(this.syuruk))
+       console.log(this.syuruk  );
+       
+       this.storage.set('zohor',JSON.stringify(this.zohor))
+       console.log(this.zohor  );
+
+       this.storage.set('asar',JSON.stringify(this.asar))
+       console.log(this.asar  );
+
+       this.storage.set('maghrib',JSON.stringify(this.maghrib))
+       console.log(this.maghrib  );
+       
+       this.storage.set('isyak',JSON.stringify(this.isyak))
+       console.log(this.isyak  );
 
       
+
      
     })
    
   }
-//default zon
- /*getLocate(zon="petaling"){
-    this.prayerService.getData(zon).subscribe((data)=>{
-      this.data= JSON.stringify(data);
-     // console.log( 'getData',data);
-      var obj =<any> data;
-       this.zon=obj.data[0].zon;
-       this.negeri=obj.data[0].negeri;
-       this.subuh=obj.data[0].waktu_solat[1].time;
-       this.syuruk=obj.data[0].waktu_solat[2].time;
-       this.zohor=obj.data[0].waktu_solat[3].time;
-       this.asar=obj.data[0].waktu_solat[4].time;
-       this.maghrib=obj.data[0].waktu_solat[5].time;
-       this.isyak=obj.data[0].waktu_solat[6].time;
 
-       
-    
-    })
-  }*/
 
   //get Day of the week
   getDay(){
@@ -158,17 +233,15 @@ getLocation(zon){
     'July','August','September','October','November','December']
     this.formattedDate = date +' ' + monthArray[month] +' ' + year ;
   }
-  /*saveData(){
-    var roofRef =firebase.database.ref();
-    var child =roofRef.child('/prayer/subuh');
-    var childRef=child.push();
-    childRef.set(this.subuh);
-  }*/
-
+  
   
     
   backagain() {
     this.router.navigateByUrl('/tabs/tab3');
+  }
+
+  backagainn() {
+    this.router.navigateByUrl('/storage-p');
   }
 
   
@@ -191,13 +264,92 @@ getLocation(zon){
     this.isyak
 
     this.storage.set('zon',JSON.stringify(this.zon))
-    this.storage.set('subuh',JSON.stringify(this.subuh))
-    this.storage.set('syuruk',JSON.stringify(this.syuruk))
-    this.storage.set('zohor',JSON.stringify(this.zohor))
-    this.storage.set('asar',JSON.stringify(this.asar))
-    this.storage.set('maghrib',JSON.stringify(this.maghrib))
-    this.storage.set('isyak',JSON.stringify(this.isyak))
+   
 
+  }
+
+  convertStrtoTime(){
+    this.storage.get('zon').then((val)=>{
+      //console.log(val);
+
+      if(val!=null){
+        //if is not null, pull from storage
+        let zon=JSON.parse(val);
+        
+      }
+      else{
+        //default to petaling
+        this.zon= 'petaling';
+      }
+      
+      //subuh storage
+      this.storage.get('subuh').then((val)=>{
+        this.subuh=val;
+        console.log(val)
+        var hrmm=this.subuh.split(":");
+      hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+      hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+      var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+      console.log(time)
+
+          //syuruk storage
+          this.storage.get('syuruk').then((val)=>{
+          this.syuruk=val;
+          console.log(val)
+          var hrmm=this.syuruk.split(":");
+          hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+          hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+          var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+          console.log(time)
+            
+            //zohor storage
+            this.storage.get('zohor').then((val)=>{
+            this.zohor=val;
+            console.log(val)
+            var hrmm=this.zohor.split(":");
+            hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+            hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+            var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+            console.log(time)
+
+            //asar storage
+            this.storage.get('asar').then((val)=>{
+              this.asar=val;
+              console.log(val)
+              var hrmm=this.asar.split(":");
+              hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+              hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+              var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+              console.log(time)
+
+              //maghrib storage
+              this.storage.get('maghrib').then((val)=>{
+                this.maghrib=val;
+                console.log(val)
+                var hrmm=this.maghrib.split(":");
+                hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+                hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+                var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+                console.log(time)
+
+                this.storage.get('isyak').then((val)=>{
+                  this.isyak=val;
+                  console.log(val)
+                  var hrmm=this.isyak.split(":");
+                  hrmm[0]=hrmm[0].trim().substring(1); console.log(hrmm[0]);
+                  hrmm[1]=hrmm[1].trim().substring(0,2); console.log(hrmm[1]);
+                  var time= Number(hrmm[0])*60 + Number(hrmm[1]);
+                  console.log(time)
+                  
+                });
+              });
+            });
+          });
+        });
+      });
+
+
+    });
   }
  
 }
