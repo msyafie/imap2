@@ -14,6 +14,8 @@ export class PrayerService {
   
   url1 ='https://api.pray.zone/v2/times/today.json';
 
+  url3='https://api.azanpro.com/times/today.json?format=12-hour&zone=';
+
   constructor(private http: HttpClient) { }
 
  getData( zon){
@@ -42,6 +44,13 @@ export class PrayerService {
   .set('city' , city)
 
   return this.http.get(this.url1,{params});
+ }
+
+ getDataZon(zone:string ){
+  let params = new HttpParams()
+  .set('zone' , zone)
+
+  return this.http.get(this.url3,{params});
  }
 
 

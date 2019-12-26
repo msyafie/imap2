@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
-import { ModalController, LoadingController } from '@ionic/angular';
+import { ModalController, LoadingController, NavController } from '@ionic/angular';
 import { PrayerService } from 'src/app/services/prayer.service';
 @Component({
   selector: 'app-storage-p',
@@ -34,6 +34,7 @@ export class StoragePPage implements OnInit {
     private modal: ModalController,
     private loader: LoadingController,
     private prayerService: PrayerService,
+    private navCtrl: NavController,
     
     ) { 
 
@@ -158,5 +159,13 @@ export class StoragePPage implements OnInit {
     this.formattedDate = date +' ' + monthArray[month] +' ' + year ;
   }
 
+
+  backagainn() {
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  backD() {
+    this.navCtrl.navigateForward('/notifikasi');
+  }
   }
 

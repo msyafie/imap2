@@ -1,9 +1,228 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>notifikasi</ion-title>
+  <ion-toolbar color="success">
+    <ion-title>Prayer Times Malaysia </ion-title>
+    <ion-icon (click)="backD()" slot="start" name="arrow-round-back"></ion-icon>
+    <ion-icon (click)="backagainn()" slot="start" name="arrow-round-forward"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
+  <div class ="bg-class">
+   
+   <ion-item >
+     <ion-label>Select zone</ion-label>
+    <ion-select [(ngModel)]="zone"  (ionChange)="getCity(zone)">
+      <ion-select-option value="JHR01" selected="true">Pulau Pemanggil,Johor</ion-select-option>
+       <ion-select-option value="JHR01">Pulau Aur,Johor</ion-select-option>
+       <ion-select-option value="JHR02">Johor Bharu,Johor</ion-select-option>
+       <ion-select-option value="JHR02">Kota Tinggi,Johor</ion-select-option>
+       <ion-select-option value="JHR02">Mersing,Johor</ion-select-option>
+       <ion-select-option value="JHR02">Kluang,Johor</ion-select-option>
+       <ion-select-option value="JHR04">Batu Pahat,Johor</ion-select-option>
+       <ion-select-option value="JHR04">Muar,Johor</ion-select-option>
+       <ion-select-option value="JHR04">Segamat,Johor</ion-select-option>
+       <ion-select-option value="JHR04">Gemas,Johor</ion-select-option>
+       <ion-select-option value="NGS01">Tampin,N9</ion-select-option>
+       <ion-select-option value="NGS01">Jempol,N9</ion-select-option>
+       <ion-select-option value="NGS02">Jelebu,N9</ion-select-option>
+       <ion-select-option value="NGS02">Kuala Pilah,N9</ion-select-option>
+       <ion-select-option value="NGS02">Port Dickson,N9</ion-select-option>
+       <ion-select-option value="NGS02">Rembau,N9</ion-select-option>
+       <ion-select-option value="NGS02">Seremban,N9</ion-select-option>
+       <ion-select-option value="KDH01">Alor Setar,Kedah</ion-select-option>
+       <ion-select-option value="KDH01">Kubang Pasu,Kedah</ion-select-option>
+       <ion-select-option value="KDH01">Pokok Sena,Kedah</ion-select-option>
+       <ion-select-option value="KDH02">Kuala Muda,Kedah</ion-select-option>
+       <ion-select-option value="KDH02">Yan,Kedah</ion-select-option>
+       <ion-select-option value="KDH02">Pendang,Kedah</ion-select-option>
+       <ion-select-option value="KDH03">Padang Terap,Kedah</ion-select-option>
+       <ion-select-option value="KDH03">Sik,Kedah</ion-select-option>
+       <ion-select-option value="KDH04">Baling,Kedah</ion-select-option>
+       <ion-select-option value="KDH05">Bandar Bharu, Kedah</ion-select-option>
+       <ion-select-option value="KDH05">Kulim,Kedah</ion-select-option>
+       <ion-select-option value="KDH06">Langkawi,Kedah</ion-select-option>
+       <ion-select-option value="KDH07">Gunung Jerai, Kedah</ion-select-option>
+       <ion-select-option value="KTN01">Bachok,Kelantan</ion-select-option>
+       <ion-select-option value="KTN01">Kota Bharu,Kelantan</ion-select-option>
+       <ion-select-option value="KTN01">Machang,Kelantan</ion-select-option>
+       <ion-select-option value="KTN01">Pasir Puteh,Kelantan</ion-select-option>
+       <ion-select-option value="KTN01">Pasir Mas,Kelantan</ion-select-option>
+       <ion-select-option value="KTN01">Tanah Merah,Kelantan</ion-select-option>
+       <ion-select-option value="KTN01">Tumpat,Kelantan</ion-select-option>
+       <ion-select-option value="KTN01">Kuala Krai,Kelantan</ion-select-option>
+       <ion-select-option value="KTN01">Mukim Chiku,Kelantan</ion-select-option>
+       <ion-select-option value="KTN03">Gua Musang,Kelantan</ion-select-option>
+       <ion-select-option value="KTN03">jeli,Kelantan</ion-select-option>
+       <ion-select-option value="PLS01">Kangar,Perlis</ion-select-option>
+       <ion-select-option value="PLS01">Padang Besar,Perlis</ion-select-option>
+       <ion-select-option value="PLS01">Arau,Perlis</ion-select-option>
+       <ion-select-option value="PNG01">Pulau Pinang</ion-select-option>
+       <ion-select-option value="PRK01">Tapah,Perak</ion-select-option>
+       <ion-select-option value="PRK01">Slim River,Perak</ion-select-option>
+       <ion-select-option value="PRK01">Tanjung Malim,Perak</ion-select-option>
+       <ion-select-option value="PRK02">Kuala Kangsar,Perak</ion-select-option>
+       <ion-select-option value="PRK02">Sg Siput,Perak</ion-select-option>
+       <ion-select-option value="PRK02">Ipoh,Perak</ion-select-option>
+       <ion-select-option value="PRK02">Batu Gajah,Perak</ion-select-option>
+       <ion-select-option value="PRK02">Kampar,Perak</ion-select-option>
+      <ion-select-option value="PRK03">Lenggong,Perak</ion-select-option>
+      <ion-select-option value="PRK03">Pengkalan Hulu,Perak</ion-select-option>
+      <ion-select-option value="PRK03">Gerik,Perak</ion-select-option>
+      <ion-select-option value="PRK04">Temengor,Perak</ion-select-option>
+      <ion-select-option value="PRK04">Belum,Perak</ion-select-option>
+      <ion-select-option value="PRK04">Temengor,Perak</ion-select-option>
+       <ion-select-option value="PRK05">Kg Gajah,Perak</ion-select-option>
+      <ion-select-option value="PRK05">Teluk Intan,Perak</ion-select-option>
+      <ion-select-option value="PRK05">Bagan Datuk,Perak</ion-select-option>
+      <ion-select-option value="PRK05">Seri Iskandar,Perak</ion-select-option>
+      <ion-select-option value="PRK05">Beruas,Perak</ion-select-option>
+      <ion-select-option value="PRK05">Parit,Perak</ion-select-option>
+       <ion-select-option value="PRK05">Lumut,Perak</ion-select-option>
+        <ion-select-option value="PRK05">Sitiawan,Perak</ion-select-option>
+       <ion-select-option value="PRK05">Pulau Pangkor,Perak</ion-select-option>
+       <ion-select-option value="PRK06">Selama,Perak</ion-select-option>
+       <ion-select-option value="PRK06">Taiping,Perak</ion-select-option>
+       <ion-select-option value="PRK06">Bagan Serai,Perak</ion-select-option>
+       <ion-select-option value="PRK07">Bukit Larut</ion-select-option>
+       <ion-select-option value="PRK07">Taiping,Perak</ion-select-option>
+       <ion-select-option value="WLY01">Kuala Lumpur</ion-select-option>
+       <ion-select-option value="WLY01">Putrajaya</ion-select-option>
+       <ion-select-option value="WLY02">Labuan</ion-select-option>
+       <ion-select-option value="SGR01">Gombak,Selangor</ion-select-option>
+       <ion-select-option value="SGR01">Petaling,Selangor</ion-select-option>
+       <ion-select-option value="SGR01">Sepang</ion-select-option>
+        <ion-select-option value="SGR01">Hulu Langat,Selangor</ion-select-option>
+       <ion-select-option value="SGR01">Hulu Selangor</ion-select-option>
+       <ion-select-option value="SGR01">Rawang,Selangor</ion-select-option>
+       <ion-select-option value="SGR01">Shah Alam,Selangor</ion-select-option>
+       <ion-select-option value="SGR02">Kuala Selangor</ion-select-option>
+       <ion-select-option value="SGR02">Sabak Bernam,Selangor</ion-select-option>
+       <ion-select-option value="SGR03">Klang,Selangor</ion-select-option>
+       <ion-select-option value="SGR03">Kuala Langat,Selangor</ion-select-option> 
+       <ion-select-option value="TRG01">Kuala Terengganu</ion-select-option>
+       <ion-select-option value="TRG01">Marang,Terengganu</ion-select-option>
+       <ion-select-option value="TRG01">Kuala Neras,Terengganu</ion-select-option>
+       <ion-select-option value="TRG02">Besut,Terengganu</ion-select-option>
+       <ion-select-option value="TRG02">Setia,Terengganu</ion-select-option>
+       <ion-select-option value="TRG03">Hulu Terengganu</ion-select-option>
+       <ion-select-option value="TRG04">Dungun,Terengganu</ion-select-option>
+       <ion-select-option value="TRG04">Kemaman,Terengganu</ion-select-option>
+       <ion-select-option value="SBH02">Sandakan,Sabah</ion-select-option>
+       <ion-select-option value="SBH01">Sukau,Sabah</ion-select-option>
+       <ion-select-option value="SBH04">Tawau,Sabah</ion-select-option> 
+       <ion-select-option value="SBH06">Kota Kinabalu,Sabah</ion-select-option>
+       <ion-select-option value="SBH06">Gunung Kinabalu,Sabah</ion-select-option>
+       <ion-select-option value="SBH07">Tuaran,Sabah</ion-select-option>
+       <ion-select-option value="SBH01">Bukit Garam,Sabah</ion-select-option> 
+       <ion-select-option value="SBH09">Beaufort,Sabah</ion-select-option>
+       <ion-select-option value="SBH09">Kuala Penyu,Sabah</ion-select-option>
+       <ion-select-option value="SBH09">Weston,Sabah</ion-select-option>
+       <ion-select-option value="SWK03">Bintulu,Sarawak</ion-select-option>
+       <ion-select-option value="SWK01">Miri,Sarawak</ion-select-option>
+       <ion-select-option value="SWK04">Sibu,Sarawak</ion-select-option> 
+       <ion-select-option value="SWK05">Mukah,Sarawak</ion-select-option>
+       <ion-select-option value="SWK06">Sri Aman,Sarawak</ion-select-option>
+       <ion-select-option value="SWK06">Spaoh,Sarawak</ion-select-option>
+       <ion-select-option value="SWK07">Samarahan,Sarawak</ion-select-option>
+       <ion-select-option value="SWK08">Kuching,Sarawak</ion-select-option>
+       <ion-select-option value="SWK08">Semantan,Sarawak</ion-select-option>
+       <ion-select-option value="SWK07">Serian,Sarawak</ion-select-option>
+       <ion-select-option value="PHG01">Pulau Tioman,Pahang</ion-select-option>
+       <ion-select-option value="PHG02">Kuantan,Pahang</ion-select-option>
+       <ion-select-option value="PHG02">Rompin,Pahang</ion-select-option>
+       <ion-select-option value="PHG02">Muadzam Shah,Pahang</ion-select-option>
+       <ion-select-option value="PHG02">Pekan,Pahang</ion-select-option>
+       <ion-select-option value="PHG03">Jerantut,Pahang</ion-select-option>
+       <ion-select-option value="PHG03">Temerloh,Pahang</ion-select-option>
+       <ion-select-option value="PHG03">Maran,Pahang</ion-select-option>
+       <ion-select-option value="PHG03">Bera,Pahang</ion-select-option>
+       <ion-select-option value="PHG03">Chenor,Pahang</ion-select-option>
+       <ion-select-option value="PHG03">Jengka,Pahang</ion-select-option>
+       <ion-select-option value="PHG04">Bentong,Pahang</ion-select-option>
+       <ion-select-option value="PHG04">Lipis,Pahang</ion-select-option>
+       <ion-select-option value="PHG04">Raub,Pahang</ion-select-option>
+       <ion-select-option value="PHG05">Genting Sempah,Pahang</ion-select-option>
+       <ion-select-option value="PHG05">Janda Baik,Pahang</ion-select-option>
+       <ion-select-option value="PHG05">Bukit Tinggi,Pahang</ion-select-option>
+       <ion-select-option value="PHG06">Cameron Highlands,Pahang</ion-select-option>
+       <ion-select-option value="PHG06">Genting Highlands,Pahang</ion-select-option>
+       <ion-select-option value="PHG06">Bukit Fraser,Pahang</ion-select-option>
+
+
+     </ion-select>
+   
+   </ion-item>
+
+  
+  
+   <div class="ion-text-center">
+     <h1 > Prayer Time in {{location}} {{locations}}  {{locationss}} {{locationsss}}  </h1>
+     <h1>{{locationssss}} {{locationsssss}} {{locationssssss}}</h1>
+     <h1> {{locationsssssss}} {{locationsssssssss}} {{locationsssssssss}}</h1>
+     <h3> Today {{day}} {{formattedDate}} </h3>
+   </div>
+    
+   <div class=" ion-text-center">
+ 
+    <!--this is for card display subuh -->
+    <ion-grid>
+        <ion-col class="ion-no-padding">
+         <ion-card class="cardHolder">
+           <ion-card-content style="font-size :20px" class="fixline">
+            <ion-label> Fajr  {{subuh}} </ion-label> 
+             
+           </ion-card-content>
+         </ion-card >
+         <!--this is for card display syuruk -->
+         <ion-card class="cardHolder">
+            <ion-card-content style="font-size :20px" class="fixline">
+             Syuruk {{syuruk}} 
+            </ion-card-content>
+          </ion-card>
+
+           <!--this is for card display zohor -->
+         <ion-card class="cardHolder">
+            <ion-card-content style="font-size :20px" class="fixline">
+            Zohor {{zohor}} 
+            </ion-card-content>
+          </ion-card>
+
+           <!--this is for card display asar -->
+         <ion-card class="cardHolder">
+            <ion-card-content  style="font-size :20px" class="fixline">
+              Asar {{asar}} 
+            </ion-card-content>
+          </ion-card>
+
+           <!--this is for card display maghrib -->
+         <ion-card class="cardHolder">
+            <ion-card-content style="font-size :20px" class="fixline">
+             Maghrib {{maghrib}} 
+            </ion-card-content>
+          </ion-card>
+
+
+           <!--this is for card display isyak -->
+         <ion-card class="cardHolder">
+            <ion-card-content style="font-size :20px" class="fixline">
+             Isyak {{isyak}} 
+            </ion-card-content>
+            <ion-card-title text-center>Powered by JAKIM</ion-card-title>
+          </ion-card>
+
+         </ion-col>
+        
+        </ion-grid>
+
+       <!-- <ion-col>
+          <ion-button (click)="saveData()" color="success" shape="small" >Save PrayerTime</ion-button>
+      </ion-col>  -->
+               
+             
+   </div>
+
+  
+
+</div>
 </ion-content>

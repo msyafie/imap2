@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Observable, scheduled } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {AngularFireModule} from '@angular/fire';
-import {AngularFireDatabaseModule, AngularFireDatabase, snapshotChanges } from '@angular/fire/database';
-import { NavController, Platform, AlertController } from '@ionic/angular';
-import { AngularFirestore } from '@angular/fire/firestore';
-//import { LocalNotifications, ELocalNotificationTriggerUnit } from '@ionic-native/local-notifications/ngx';
-import { environment } from 'src/environments/environment';
-import * as firebase from 'firebase';
+import { PrayerService } from 'src/app/services/prayer.service';
+import { FormsModule } from '@angular/forms';
+import { Platform, NavParams,NavController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-notifikasi',
@@ -17,73 +13,158 @@ import * as firebase from 'firebase';
 })
 export class NotifikasiPage implements OnInit {
 
- prays= [];
- prayers =firebase.database().ref('/prayers');
- snapshot;
- subuh: string;
- syuruk: string;
- zohor:string;
- asar: string;
- maghrib:string;
- isyak:string;
+  latitude;
+  longitude;   
+  prayer;
+  zone:string;
+  data :any ;
+  subuh:string ;
+  syuruk:string;
+  zohor:string;
+  asar:string;
+  maghrib:string;
+  isyak:string;
+ 
+  location:string;
+  locations:string;
+  locationss:string;
+  locationsss:string;
+  locationssss:string;
+  locationsssss:string;
+  locationssssss:string;
+  locationsssssss:string;
+  locationssssssss:string;
+  locationsssssssss:string;
+
+  formattedDate: string;
+ day:string;
+
+  //current time
+d = new Date();
+m = this.d.getMinutes();
+h = this.d.getHours();
+currentTime = this.h+this.m;
 
 
-  d = new Date();
-  m = this.d.getMinutes();
-  h = this.d.getHours();
-  currentTime = this.h+":"+this.m;
-  
-  originalTime = new Date(Date.now() *1000).getTime();
   constructor(
-    public navCtrl: NavController,
-    private afstore:AngularFirestore,
-    public db: AngularFireDatabase, 
-    public http: HttpClient,
-    public alertCtrl :AlertController,
-    //public localNotifications:LocalNotifications,
-    public platform: Platform,
-  ) { 
-    
-  }
+    private navCtrl: NavController,
+     private prayerService: PrayerService,
+     private router: Router,
+     private storage:Storage
+    ) {}
 
   ngOnInit() {
-    
-  }
 
+    //Get Storage Selected Zon
+    this.storage.get('zone').then((val)=>{
+      //console.log(val);
 
-  getsolatReport(){
-    this.db.list('/prayers').valueChanges().subscribe((prayers) => { 
-      console.log("datas", prayers)
-    },(err)=>{
-       console.log("probleme : ", err)
-    
-    });
-  }
-  
-  getPray(){
-    firebase.firestore().collection('Prayer').doc(firebase.auth().currentUser.uid).get().then
-    (doc => {
-      this.subuh = doc.data().Subuh
-      this.syuruk = doc.data().Syuruk
-      this.zohor = doc.data().Zohor
-      this.asar = doc.data().Asar
-      this.maghrib =doc.data().Maghrib
-      this.isyak=doc.data().Isyak
-    }
-    
-    )
-    
-     /* if(this.subuh = this.currentTime){
-        //notify method
+      if(val!=null){
+        //if is not null, pull from storage
+        let zon=JSON.parse(val);
+        
       }
-
-      else(this.syuruk =this.currentTime){
-        //notify method
-      }*/
+      else{
+        //default to petaling
+        this.zone= 'SGR01';
+      }
+    });
       
-    return this.subuh,this.syuruk,this.zohor, this.asar, this.maghrib,this.isyak
-    console.log('okay')
-
+     //this.getLocation();
+     this.getCity(this.zone);
+     this.getFormattedDate();
+    this.getDay();
   }
 
+
+
+    getCity(zone){
+      this.prayerService.getDataZon(zone).subscribe((data :any) =>{
+        this.prayer =JSON.stringify(data);
+        console.log('getDataCity',data);
+        var obj =<any> data;
+          this.location =obj.locations[5]
+          this.locations =obj.locations[0]
+          this.locationss =obj.locations[2]
+          this.locationsss =obj.locations[3]
+          this.locationssss =obj.locations[4]
+          this.locationsssss =obj.locations[1]
+          this.locationssssss =obj.locations[0]
+          this.locationsssssss =obj.locations[7]
+          this.locationssssssss =obj.locations[8]
+          this.locationsssssssss =obj.locations[9]
+          this.subuh =  obj.prayer_times.subuh.toUpperCase();
+          this.syuruk= obj.prayer_times.syuruk.toUpperCase();
+          this.zohor= obj.prayer_times.zohor.toUpperCase();
+          this.asar=  obj.prayer_times.asar.toUpperCase();
+          this.maghrib =obj.prayer_times.maghrib.toUpperCase();
+          this.isyak=obj.prayer_times.isyak.toUpperCase();
+      })
+    }
+
+
+//get Day of the week
+getDay(){
+  let date = new Date().getDay();
+  switch(date) {
+    case 0:
+    this.day = 'Sunday';
+    break;
+
+    case 1:
+    this.day = 'Monday';
+    break;
+
+    case 2:
+    this.day = 'Tuesday';
+    break;
+
+    case 3:
+    this.day = 'Wednesday';
+    break;
+
+    case 4:
+    this.day = 'Thursday';
+    break;
+
+    case 5:
+    this.day = 'Friday';
+    break;
+
+    case 6:
+    this.day = 'Saturday';
+    break;
+
+
+  }
+}
+
+//get month of the year
+getFormattedDate(){
+  var dateObj =new Date()
+  var year = dateObj.getFullYear().toString()
+  var month =dateObj.getMonth().toString()
+  var date =dateObj.getDate().toString()
+
+  var monthArray =['January','Febuary','March','April','May','June',
+  'July','August','September','October','November','December']
+  this.formattedDate = date +' ' + monthArray[month] +' ' + year ;
+}
+
+
+  
+backagain() {
+  this.router.navigateByUrl('/dashboard');
+}
+
+backagainn() {
+  this.router.navigateByUrl('/dahboard');
+}
+
+backD() {
+  this.navCtrl.navigateForward('/dashboard');
+}
+
+
+  
 }
